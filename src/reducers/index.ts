@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import login from './login'
 import profile from './profile'
+import quizes from './quiz'
 
 export default combineReducers({
   login: login,
-  profile: profile
+  profile: profile,
+  quizes: quizes,
 })
 
 

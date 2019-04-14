@@ -12,6 +12,11 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 
 //interface Identifiable { todo_id: string, url: string; }
@@ -33,6 +38,12 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
   menu: {
     width: 200,
   },
+  formControl: {
+    margin: theme.spacing.unit * 3,
+  },
+  group: {
+    margin: `${theme.spacing.unit}px 0`,
+  },
 });
 
 
@@ -42,8 +53,8 @@ class TakeQuiz extends React.Component<any, any> {
   constructor(props: any){
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      quiz: {},
+      current_question: 0
     }
   }
 
@@ -53,25 +64,55 @@ class TakeQuiz extends React.Component<any, any> {
     //alert(this.props.match.params.list_id);
     //alert(JSON.stringify(this.props));
 
-  }
-  onEmailChange = () => {
-
-      //alert(e.target.value);
+    this.setState({quiz: this.props.quiz});
 
   }
 
-  onPasswordChange = () => {
+  componentDidUpdate = () => {
+
+    //alert(JSON.stringify(this.props));
+    //alert(this.props.match.params.list_id);
+    //alert(JSON.stringify(this.props));
+
+  }
+
+  handleChange = (e:any) => {
+
+      alert(e.target.value);
+
+  }
+
+  nextQuestion = () => {
 
       //alert(e.target.value);
+      //this.props.nextQuestion(this.state.current_question + 1)
+      ///this.state.question == 
 
   }
 
   render(){
 
-    const {classes} = this.props;
+    const {match, classes} = this.props;
+    const {quiz} = this.state;
     return (
       <div>
-          Quiz 1
+          <FormControl>
+          <FormLabel>{quiz.quiz_question}</FormLabel>    
+          <RadioGroup
+                aria-label="Gender"
+                name="gender1"
+                value={this.state.value}
+                onChange={this.handleChange}
+              >                
+          <br/>
+          {quiz.quiz_choices != undefined && quiz.quiz_choices.map((choice: any) => 
+                                
+                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice}/>
+                                
+                                )}
+          <br/>
+          </RadioGroup>
+          </FormControl>
           <br/>
           <br/>
           I live in the same house as:
@@ -80,14 +121,15 @@ class TakeQuiz extends React.Component<any, any> {
           <Radio></Radio>“Real” mom and “real” dad, but not TOGETHER (separated or divorced)
           <br/>
           <br/>
+          <br/>
+          <br/>
           <TextField
                 id="standard-name"
                 label="Email"
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
-                onChange={this.onEmailChange}/>
+                multiline={true}/>
 
           <br/>
           <TextField
@@ -96,10 +138,9 @@ class TakeQuiz extends React.Component<any, any> {
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
-                onChange={this.onPasswordChange}/>
+                multiline={true}/>
           <br/>
-          <Button>take Quiz</Button>
+          <Button onClick={this.nextQuestion}>take Quiz</Button>
          
       </div>
     );
@@ -112,13 +153,13 @@ const mapStateToProps = (state: any, ownProps: any) => {
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
-    //questions: state.questions.questions
+    quiz: state.quizes.quizes[0]
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onAddTodo: (title: any, description: any) => {
+    nextQuestion: (previousQuestion: any) => {
       //dispatch(addTodo(title, description));
     }
   };

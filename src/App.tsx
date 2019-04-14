@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import PropTypes from 'prop-types';
+
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
@@ -135,17 +136,15 @@ class Naca extends React.Component<any, any> {
         </AppBar>
         <div className={classes.root}>
           <Grid container spacing={24}>
-            <Hidden mdDown>
-            <Grid item xs={12} sm={1} md={2} lg={4}>
-              <br/>
-              <br/>
-              foods
-              <br/>
-              <Link to="/quiz">Quiz</Link>
-              <br/>
-              <Link to="/login">Login</Link>
-            </Grid>
-            </Hidden>
+              <Grid item xs={12} sm={1} md={2} lg={4}>
+                <br/>
+                <br/>
+                foods
+                <br/>
+                <Link to="/quiz">Quiz</Link>
+                <br/>
+                <Link to="/login">Login</Link>
+              </Grid>
             <Grid item xs>
               <br/>
               <br/>
@@ -158,8 +157,8 @@ class Naca extends React.Component<any, any> {
               <br/>
             </Grid>
             <Hidden mdDown>
-            <Grid item xs>
-            </Grid>
+              <Grid item xs>
+              </Grid>
             </Hidden>
           </Grid>
         </div>
