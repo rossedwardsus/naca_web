@@ -1,20 +1,4 @@
-import { combineReducers } from 'redux'
-import login from './login'
-import profile from './profile'
-import quizes from './quiz'
-import student_quiz_answers from './student_quiz_answers'
-
-export default combineReducers({
-  login: login,
-  profile: profile,
-  quizes: quizes,
-  student_quiz_answers: student_quiz_answers 
-})
-
-
-
-
-/*import { ADD_TODO, DELETE_TODO, ADD_TODO_LIST, SEARCH_NOTE } from '../actions/types';
+import { ADD_STUDENT, ADD_NOTE, UPDATE_NOTE, SEARCH_NOTE } from '../actions/types';
 
 export interface ITodo {
 	list_id: number;
@@ -34,19 +18,24 @@ interface ITodoState {
 
 const defaultState: any = {
     //todos: [{list_id: "20515590-6dd4-4f97-ab4e-0b781ac326a0", name: "workout", todos: [{todo_id: 1, title: "1"}]}, {list_id: 2, name: "gre", todos: [{todo_id: 1, title: "1"}]}]
-    todos: []
+    classroom: [{classroom_id: 1, classroom_teacher: "", students: [{student_id: 1, student_name: ""}]}]
 };
 
  let temp_state: any = null;
   	  
 
-export default function todoReducer(state: any = defaultState, action: any): any {
+export default function classroomReducer(state: any = defaultState, action: any): any {
   
   switch (action.type) {
-  	case ADD_TODO_LIST:
+  	case ADD_STUDENT:
+     //note search terms
+     //llop through note text ad only store words that arent a, the, of, and
+
+     //let search_terms = action.note_text.split(" ");
+
   	 //alert("add to do list");
-  	 temp_state = state.todos;
-  	 temp_state.push({list_id: action.payload.list_id, list_name: action.payload.list_name, todos: []});
+  	 temp_state = state.notes;
+  	 temp_state.push({note_id: action.payload.note_id, note_title: action.payload.note_title, note_text: action.payload.note_text});
 
 	  /*return Object.assign({}, state, {
             todos: [
@@ -54,38 +43,39 @@ export default function todoReducer(state: any = defaultState, action: any): any
                 ...state.todos
             ]
         })*/
-      /*return {todos: [...temp_state]}; 
+      return {notes: [...temp_state]}; 
 
-    case ADD_TODO:
+   
+    case UPDATE_NOTE:
       //return [...state, action.payload];
       //alert("reducer" + JSON.stringify(action.payload));
-      let index = state.todos.findIndex((todo: any) => todo.list_id == 1);
-      //alert(JSON.stringify(temp_todos));
+      let index = state.notes.findIndex((note: any) => note.note_id == 1);
+      
+      //alert(JSON.stringify(index));
       //temp_todos[0]["name"] = "testing";
       //alert("updated" + JSON.stringify(temp_todos));
       //find index of list
-      temp_state = state.todos;
-      temp_state[index]["list_name"] = "testing";*/
+      
+      let temp_notes_state = state.notes;
+      temp_notes_state[index]["note_title"] = action.payload.note_title;
+      temp_notes_state[index]["note_text"] = action.payload.note_text;
       //temp_state[0].push({});
 
-      /*return Object.assign({}, state, {
-      			//if state length is > 0
-      			//find list by add and then add
-      			//state.todos.filter
-      			//else just add the todo to a new list
+      return Object.assign({}, state, {
+            //if state length is > 0
+            //find list by add and then add
+            //state.todos.filter
+            //else just add the todo to a new list
                 //todos: [
                 //    { todo_id: "generateId()", title: action.payload.title, description: action.payload.description },
                 //    ...state.todos
                 //]
-                todos: [...temp_state]
-            });*/
-        /*return {todos: [...temp_state]}
-
-    case DELETE_TODO:
-      //return state.filter((todo: any) => todo.id !== action.payload.id);
+                notes: [...temp_notes_state]
+            });
+      //return state
 
 
     default:
       return state;
   }
-}*/
+}

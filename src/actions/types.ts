@@ -2,16 +2,17 @@ import * as H from 'history';
 
 export const ADD_TODO = 'ADD_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
-
 export const ADD_TODO_TAG = 'ADD_TODO_TAG';
-
 export const ADD_NOTE = 'ADD_NOTE'
-
 export const SEARCH_NOTE = 'SEARCH_NOTE'
-
 export const UPDATE_NOTE = 'UPDATE_NOTE'
 
 export const AUTHENTICATE = 'AUTHENTICATE'
+
+
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER'
+export const ADD_STUDENT = 'ADD_STUDENT'
+export const GET_CLASSROOM = 'GET_CLASSROOM'
 
 
 export interface Todo {

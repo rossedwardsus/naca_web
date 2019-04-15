@@ -24,6 +24,8 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 import Quiz from "./quiz/take_quiz";
 import Login from "./auth/login";
+import Classroom from "./classroom/classroom";
+import Students from "./classroom/students";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -143,6 +145,14 @@ class Naca extends React.Component<any, any> {
                 <br/>
                 <Link to="/quiz">Quiz</Link>
                 <br/>
+                <Link to="/quiz">Create Class</Link>
+                <br/>
+                <Link to="/classroom">Class</Link>
+                <br/>
+                <Link to="/students">Students</Link>
+                <br/>
+                <Link to="/quiz/results">View Quiz</Link>
+                <br/>
                 <Link to="/login">Login</Link>
               </Grid>
             <Grid item xs>
@@ -153,6 +163,8 @@ class Naca extends React.Component<any, any> {
               <Switch>
                 <Route exact path="/" component={Quiz} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/classroom" component={Classroom} />
+                <Route exact path="/students" component={Students} />
               </Switch>
               <br/>
             </Grid>

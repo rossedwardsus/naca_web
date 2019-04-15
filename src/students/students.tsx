@@ -47,7 +47,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class TakeQuiz extends React.Component<any, any> {
+class Classroom extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -100,6 +100,18 @@ class TakeQuiz extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
+          Clasroom name
+          <br/>
+          Teacher name
+          <br/>
+          <br/>
+          view students - sidebar
+          <br/>
+          Naca-individual-group
+          <br/>
+          View results - by student
+          <br/>
+          <br/>
           <FormControl component={"fieldset" as "div"} className={classes.formControl}>
           <FormLabel component={"legend" as "menu"}>{quiz.quiz_question}</FormLabel>    
           <RadioGroup
@@ -171,5 +183,5 @@ const mapDispatchToProps = (dispatch: any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(TakeQuiz)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
 
