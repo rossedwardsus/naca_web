@@ -119,31 +119,6 @@ class TakeQuiz extends React.Component<any, any> {
           </FormControl>
           <br/>
           <br/>
-          I live in the same house as:
-          <Radio></Radio>Real mom and Real dad
-          <br/>
-          <Radio></Radio>“Real” mom and “real” dad, but not TOGETHER (separated or divorced)
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Email"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
-
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Password"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
-          <br/>
           <Button onClick={this.nextQuestion}>take Quiz</Button>
          
       </div>
