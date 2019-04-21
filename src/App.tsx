@@ -147,6 +147,7 @@ class Naca extends React.Component<any, any> {
                       About Page
                   </Button>
                 </Link>
+                <br/>
                 <Link to="/quiz">Quiz</Link>
                 <br/>
                 <Link to="/quiz">Create Class</Link>
