@@ -141,10 +141,11 @@ class Naca extends React.Component<any, any> {
               <Grid item xs={12} sm={1} md={2} lg={4}>
                 <br/>
                 <br/>
+                Choose a quiz:
                 <br/>
                 <Link to="/quiz">
                   <Button variant="contained" color="primary">
-                      About Page
+                      Quiz1
                   </Button>
                 </Link>
                 <br/>

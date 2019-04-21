@@ -114,7 +114,7 @@ class Classroom extends React.Component<any, any> {
           <br/>
           <TextField
                 id="standard-name"
-                label="Email"
+                label="Name"
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
@@ -123,13 +123,13 @@ class Classroom extends React.Component<any, any> {
           <br/>
           <TextField
                 id="standard-name"
-                label="Password"
+                label="Grade"
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
                 multiline={true}/>
           <br/>
-          <Button onClick={this.nextQuestion}>take Quiz</Button>
+          <Button onClick={this.nextQuestion}>Add Student</Button>
          
       </div>
     );
