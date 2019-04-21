@@ -25,7 +25,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Quiz from "./quiz/take_quiz";
 import Login from "./auth/login";
 import Classroom from "./classroom/classroom";
-import Students from "./classroom/students";
+import Students from "./students/students";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -141,15 +141,24 @@ class Naca extends React.Component<any, any> {
               <Grid item xs={12} sm={1} md={2} lg={4}>
                 <br/>
                 <br/>
-                foods
                 <br/>
+                <Link to="/quiz">
+                  <Button variant="contained" color="primary">
+                      About Page
+                  </Button>
+                </Link>
                 <Link to="/quiz">Quiz</Link>
                 <br/>
                 <Link to="/quiz">Create Class</Link>
                 <br/>
-                <Link to="/classroom">Class</Link>
+                <br/>
+                <Link to="/classrooms/1">Class 1</Link>
+                <br/>
+                <Link to="/classrooms/12">Class 12</Link>
+                <br/>
                 <br/>
                 <Link to="/students">Students</Link>
+                <br/>
                 <br/>
                 <Link to="/quiz/results">View Quiz</Link>
                 <br/>
@@ -162,9 +171,11 @@ class Naca extends React.Component<any, any> {
               <br/>
               <Switch>
                 <Route exact path="/" component={Quiz} />
+                <Route exact path="/quiz" component={Quiz} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/classroom" component={Classroom} />
+                <Route path="/classrooms/:classroom_id" component={Classroom} />
                 <Route exact path="/students" component={Students} />
+                <Route exact path="/students/:student_id" component={Students} />
               </Switch>
               <br/>
             </Grid>

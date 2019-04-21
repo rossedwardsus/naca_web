@@ -47,7 +47,7 @@ export const getClassroom = (classroom_id: any): any => ((dispatch: any, getStat
 
   dispatch({type: GET_CLASSROOM,
       payload: {
-        answer: answer
+        answer: "answer"
       }
   })
 });

@@ -40,7 +40,7 @@ export const addQuestionAnswer = (answer: any): any => ((dispatch: any, getState
 
   dispatch({type: ADD_QUESTION_ANSWER,
       payload: {
-        answer: answer
+        answer: "answer"
       }
   })
 });

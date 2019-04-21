@@ -111,7 +111,7 @@ class TakeQuiz extends React.Component<any, any> {
           <br/>
           {quiz.quiz_choices != undefined && quiz.quiz_choices.map((choice: any) => 
                                 
-                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice}/>
+                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice.text}/>
                                 
                                 )}
           <br/>
@@ -153,7 +153,7 @@ class TakeQuiz extends React.Component<any, any> {
 
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
-  //alert("add " + JSON.stringify(state));
+  alert("add " + JSON.stringify(state.quizes.quizes));
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]

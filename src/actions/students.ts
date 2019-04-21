@@ -36,7 +36,7 @@ export interface IPayload {
 
 //export const addTodo = (title: any, description: any) => (alert())
 
-export const getClassroom = (classroom_id: any): any => ((dispatch: any, getState: any) => {
+export const getStudents = (classroom_id: any): any => ((dispatch: any, getState: any) => {
   //alert(JSON.stringify(getState()) + title + note_text);
 
   /*return(dispatch) => {
@@ -47,7 +47,7 @@ export const getClassroom = (classroom_id: any): any => ((dispatch: any, getStat
 
   dispatch({type: GET_CLASSROOM,
       payload: {
-        answer: answer
+        answer: "answer"
       }
   })
 });

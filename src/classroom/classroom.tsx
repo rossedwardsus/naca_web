@@ -111,53 +111,7 @@ class Classroom extends React.Component<any, any> {
           <br/>
           View results - by student
           <br/>
-          <br/>
-          <FormControl component={"fieldset" as "div"} className={classes.formControl}>
-          <FormLabel component={"legend" as "menu"}>{quiz.quiz_question}</FormLabel>    
-          <RadioGroup
-                aria-label="Gender"
-                name="gender1"
-                value={this.state.quiz_question_answer}
-                onChange={this.handleChange}
-              >                
-          <br/>
-          {quiz.quiz_choices != undefined && quiz.quiz_choices.map((choice: any) => 
-                                
-                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice}/>
-                                
-                                )}
-          <br/>
-          </RadioGroup>
-          </FormControl>
-          <br/>
-          <br/>
-          I live in the same house as:
-          <Radio></Radio>Real mom and Real dad
-          <br/>
-          <Radio></Radio>“Real” mom and “real” dad, but not TOGETHER (separated or divorced)
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Email"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
-
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Password"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
-          <br/>
-          <Button onClick={this.nextQuestion}>take Quiz</Button>
-         
+          
       </div>
     );
   }

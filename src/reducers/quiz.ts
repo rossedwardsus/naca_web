@@ -1,4 +1,4 @@
-import { ADD_NOTE, UPDATE_NOTE, SEARCH_NOTE } from '../actions/types';
+import { ADD_QUESTION_ANSWER, ADD_NOTE, UPDATE_NOTE, SEARCH_NOTE } from '../actions/types';
 
 export interface ITodo {
 	list_id: number;
@@ -27,7 +27,7 @@ const defaultState: any = {
 export default function quizReducer(state: any = defaultState, action: any): any {
   
   switch (action.type) {
-  	case ADD_NOTE:
+  	case ADD_QUESTION_ANSWER:
      //note search terms
      //llop through note text ad only store words that arent a, the, of, and
 

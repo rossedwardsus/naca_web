@@ -100,41 +100,14 @@ class Classroom extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Clasroom name
+          Search
           <br/>
-          Teacher name
+          List of students and their scores/attendance
           <br/>
-          <br/>
-          view students - sidebar
-          <br/>
-          Naca-individual-group
-          <br/>
-          View results - by student
+          <Link to="/students/1">Student1</Link>
           <br/>
           <br/>
-          <FormControl component={"fieldset" as "div"} className={classes.formControl}>
-          <FormLabel component={"legend" as "menu"}>{quiz.quiz_question}</FormLabel>    
-          <RadioGroup
-                aria-label="Gender"
-                name="gender1"
-                value={this.state.quiz_question_answer}
-                onChange={this.handleChange}
-              >                
-          <br/>
-          {quiz.quiz_choices != undefined && quiz.quiz_choices.map((choice: any) => 
-                                
-                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice}/>
-                                
-                                )}
-          <br/>
-          </RadioGroup>
-          </FormControl>
-          <br/>
-          <br/>
-          I live in the same house as:
-          <Radio></Radio>Real mom and Real dad
-          <br/>
-          <Radio></Radio>“Real” mom and “real” dad, but not TOGETHER (separated or divorced)
+          Add student
           <br/>
           <br/>
           <br/>
