@@ -26,6 +26,7 @@ import Quiz from "./quiz/take_quiz";
 import Login from "./auth/login";
 import Classroom from "./classroom/classroom";
 import Students from "./students/students";
+import Student from "./students/student";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -159,8 +160,9 @@ class Naca extends React.Component<any, any> {
                 <Link to="/classrooms/12">Class 12</Link>
                 <br/>
                 <br/>
-                <Link to="/students">Students</Link>
+                <Link to="/students/">Students</Link>
                 <br/>
+                <Link to="/students/1">Student 1</Link>
                 <br/>
                 <Link to="/quiz/results">View Quiz</Link>
                 <br/>
@@ -177,7 +179,7 @@ class Naca extends React.Component<any, any> {
                 <Route exact path="/login" component={Login} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
                 <Route exact path="/students" component={Students} />
-                <Route exact path="/students/:student_id" component={Students} />
+                <Route path="/students/:student_id" component={Student} />
               </Switch>
               <br/>
             </Grid>

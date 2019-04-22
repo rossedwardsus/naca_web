@@ -58,53 +58,50 @@ class Profile extends React.Component<any, any> {
     const {match, classes} = this.props;
     return (
       <div>
-          Profile
+          Jason Angelo
           <br/>
-          i am a parent/student/organization/venue
+          Severity: Tier 1
           <br/>
-          location
+          Grade Level: 4
           <br/>
-          organization type
+          Teacher: Smith
           <br/>
-
-          <TextField
-                id="standard-name"
-                label="First Name"
-                className={classes.textField}
-                value={this.state.email}
-                margin="normal"
-                onChange={this.onFirstNameChange}/>
-            <br/>
-            <b>{match.params.todo_id}</b>
-            <br/>
-           <TextField
-                id="standard-name"
-                label="Last Name"
-                className={classes.textField}
-                value={this.state.password}
-                margin="normal"
-                onChange={this.onFirstNameChange}/>
-            <br/>
-            <br/>
-            <TextField
-                id="standard-name"
-                label="Email"
-                className={classes.textField}
-                value={this.state.email}
-                margin="normal"
-                onChange={this.onFirstNameChange}/>
-            <br/>
-            <TextField
-              id="standard-name"
-              label="About Me"
-              className={classes.textField}
-              value={this.state.description}
-              margin="normal"
-              multiline={true}
-              onChange={this.onFirstNameChange}
-            />
-            <br/>
-            <Button>Login</Button>
+          <br/>
+          Counselor: Benedict Alder
+          <br/>
+          Gender: Male
+          <br/>
+          Race: Caucasion
+          <br/>
+          Age: 10
+          <br/>
+          City: Morgantown
+          <br/>
+          State: West Virginia
+          <br/>
+          Attendance: 90% or higher
+          <br/>
+          <Button>Login</Button>
+          <br/>
+          <br/>
+          Tier IV
+          <br/>
+          Intensive academic supports and progress monitoring (Student Assistance Teams, I.E.P.s, and 504 plans)
+          <br/>
+          Intensive social skills training
+          <br/>
+          Functional Behavior Assessments (FBA) leading to Individualized Behavior Intervention Plans (BIP)
+          <br/>
+          Multi-Agency collaboration for wrap-around services (mental health, Child Protective Services, physicians, etc)
+          <br/>
+          Outside counseling interventions- i.e. Cognitive Behavioral Therapy
+          <br/>
+          Parent collaboration and skill building
+          <br/>
+          Alternatives to suspensions and expulsions- change of placement
+          <br/>
+          Community and Service Learning Projects
+          <br/>
           <br/>
       </div>
     );
