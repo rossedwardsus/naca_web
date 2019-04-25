@@ -75,6 +75,12 @@ class Naca extends React.Component<any, any> {
     //history.push('/todos');
   //}
 
+  componentDidMount = () => {
+
+    //alert(JSON.stringify(this.props));
+
+  }
+
   handleChange = (event: any, value: any) => {
     //alert(value)
     this.setState({ activeTab: value });
@@ -141,6 +147,8 @@ class Naca extends React.Component<any, any> {
           <Grid container spacing={24}>
               <Grid item xs={12} sm={1} md={2} lg={4}>
                 <br/>
+                If not logged in as a teacher dont show this
+                <br/>
                 <br/>
                 Choose a quiz:
                 <br/>
@@ -183,10 +191,6 @@ class Naca extends React.Component<any, any> {
               </Switch>
               <br/>
             </Grid>
-            <Hidden mdDown>
-              <Grid item xs>
-              </Grid>
-            </Hidden>
           </Grid>
         </div>
         

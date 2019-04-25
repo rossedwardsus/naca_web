@@ -7,6 +7,16 @@ import { withRouter } from 'react-router-dom'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControl from '@material-ui/core/FormControl';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+
+import Grid from '@material-ui/core/Grid';
+
+
 interface Identifiable { todo_id: string, url: string; }
 
 const styles: StyleRulesCallback = (theme: Theme) => ({
@@ -26,6 +36,9 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
   menu: {
     width: 200,
   },
+  grid: {
+    paddingLeft: 10
+  }
 });
 
 
@@ -53,56 +66,175 @@ class Profile extends React.Component<any, any> {
 
   }
 
+  handleChange = (name: any) => (e: any) => {
+
+
+  } 
+
   render(){
 
     const {match, classes} = this.props;
     return (
       <div>
-          Jason Angelo
+          <Grid container spacing={24} className={classes.grid}>
+              <Grid item xs={6} sm={6} md={6} lg={6}>
+                  Jason Angelo
+                  <br/>
+                  Severity: Tier 1
+                  <br/>
+                  Grade Level: 4
+                  <br/>
+                  Teacher: Smith
+                  <br/>
+                  <br/>
+                  Counselor: Benedict Alder
+                  <br/>
+                  Gender: Male
+                  <br/>
+                  Race: Caucasion
+                  <br/>
+                  Age: 10
+                  <br/>
+                  City: Morgantown
+                  <br/>
+                  State: West Virginia
+                  <br/>
+                  Attendance: 90% or higher
+                  <br/>
+                  <Button>Login</Button>
+                  <br/>
+          </Grid>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+            Exam Summary
+            <br/>
+            Naca Exam View Results 
+            <br/>
+            Suggested interventions
+          </Grid>
           <br/>
-          Severity: Tier 1
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+              Tier IV
+              <br/>
+              <br/>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="checkedA"
+                    />
+                  }
+                  label="Intensive academic supports and progress monitoring (Student Assistance Teams, I.E.P.s, and 504 plans)"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Intensive social skills training"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="checkedA"
+                    />
+                  }
+                  label="Functional Behavior Assessments (FBA) leading to Individualized Behavior Intervention Plans (BIP)"
+                />
+              </FormGroup>
+          </Grid>
           <br/>
-          Grade Level: 4
-          <br/>
-          Teacher: Smith
-          <br/>
-          <br/>
-          Counselor: Benedict Alder
-          <br/>
-          Gender: Male
-          <br/>
-          Race: Caucasion
-          <br/>
-          Age: 10
-          <br/>
-          City: Morgantown
-          <br/>
-          State: West Virginia
-          <br/>
-          Attendance: 90% or higher
-          <br/>
-          <Button>Login</Button>
-          <br/>
-          <br/>
-          Tier IV
-          <br/>
-          Intensive academic supports and progress monitoring (Student Assistance Teams, I.E.P.s, and 504 plans)
-          <br/>
-          Intensive social skills training
-          <br/>
-          Functional Behavior Assessments (FBA) leading to Individualized Behavior Intervention Plans (BIP)
-          <br/>
-          Multi-Agency collaboration for wrap-around services (mental health, Child Protective Services, physicians, etc)
-          <br/>
-          Outside counseling interventions- i.e. Cognitive Behavioral Therapy
-          <br/>
-          Parent collaboration and skill building
-          <br/>
-          Alternatives to suspensions and expulsions- change of placement
-          <br/>
-          Community and Service Learning Projects
-          <br/>
-          <br/>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+              <br/>
+              Tier III
+              <FormGroup row>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="checkedA"
+                    />
+                  }
+                  label="Friends"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Family"
+                />
+              </FormGroup>
+          </Grid>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+              <br/>
+              <br/>
+              Tier II
+              <br/>
+              <FormGroup row>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="checkedA"
+                    />
+                  }
+                  label="Friends"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Family"
+                />
+              </FormGroup>
+              <br/>
+          </Grid>
+          <Grid item xs={12} sm={1} md={2} lg={4}>
+            Intensive academic supports and progress monitoring (Student Assistance Teams, I.E.P.s, and 504 plans)
+            <br/>
+            <br/>
+            Intensive social skills training
+            <br/>
+            <br/>
+            Functional Behavior Assessments (FBA) leading to Individualized Behavior Intervention Plans (BIP)
+            <br/>
+            <br/>
+            Multi-Agency collaboration for wrap-around services (mental health, Child Protective Services, physicians, etc)
+            <br/>
+            <br/>
+            Outside counseling interventions- i.e. Cognitive Behavioral Therapy
+            <br/>
+            <br/>
+            Parent collaboration and skill building
+            <br/>
+            <br/>
+            Alternatives to suspensions and expulsions- change of placement
+            <br/>
+            <br/>
+            Community and Service Learning Projects
+            <br/>
+            <br/>
+          </Grid>
+          </Grid>
       </div>
     );
   }
