@@ -2,7 +2,7 @@ import React from "react";
 //import { match, RouteComponentProps } from "react-router-dom";
 import { connect } from 'react-redux';
 import { withStyles, Theme, StyleRulesCallback } from '@material-ui/core/styles/';
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -10,9 +10,14 @@ import Button from '@material-ui/core/Button';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
+
 import Checkbox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import Grid from '@material-ui/core/Grid';
 
@@ -42,7 +47,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Profile extends React.Component<any, any> {
+class Student extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -101,7 +106,14 @@ class Profile extends React.Component<any, any> {
                   <br/>
                   Attendance: 90% or higher
                   <br/>
-                  <Button>Login</Button>
+                  <br/>
+                  <Link to="/teacher/students/1/edit">
+                      <Button variant="contained" color="primary">
+                          Edit Student
+                      </Button>
+                  </Link>
+                  <br/>
+                  <br/>
                   <br/>
           </Grid>
           <Grid item xs={6} sm={6} md={6} lg={6}>
@@ -109,7 +121,17 @@ class Profile extends React.Component<any, any> {
             <br/>
             Naca Exam View Results 
             <br/>
+            <List>
+                <ListItem>
+                  <ListItemText primary="#vent"></ListItemText>
+                </ListItem>
+                <ListItem component={({innerRef,...props}) => <Link {...props} to="/student/1/exam/1/results">Here</Link>}></ListItem>
+            </List>
+            <br/>
             Suggested interventions
+            <br/>
+            <br/>
+            This student is Tier i
           </Grid>
           <br/>
           <Grid item xs={6} sm={6} md={6} lg={6}>
@@ -148,13 +170,6 @@ class Profile extends React.Component<any, any> {
                   }
                   label="Functional Behavior Assessments (FBA) leading to Individualized Behavior Intervention Plans (BIP)"
                 />
-              </FormGroup>
-          </Grid>
-          <br/>
-          <Grid item xs={6} sm={6} md={6} lg={6}>
-              <br/>
-              Tier III
-              <FormGroup row>
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -163,7 +178,17 @@ class Profile extends React.Component<any, any> {
                       value="checkedA"
                     />
                   }
-                  label="Friends"
+                  label="Multi-Agency collaboration for wrap-around services (mental health, Child Protective Services, physicians, etc)"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="checkedA"
+                    />
+                  }
+                  label="Outside counseling interventions- i.e. Cognitive Behavioral Therapy"
                 />
                 <FormControlLabel
                   control={
@@ -174,7 +199,112 @@ class Profile extends React.Component<any, any> {
                       color="primary"
                     />
                   }
-                  label="Family"
+                  label="Parent collaboration and skill building"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Alternatives to suspensions and expulsions- change of placement"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Community and Service Learning Projects"
+                />
+              </FormGroup>
+          </Grid>
+          <br/>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+              <br/>
+              Tier III
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="checkedA"
+                    />
+                  }
+                  label="Intensive academic supports and progress monitoring (Student Assistance Teams, I.E.P.s, and 504 plans)"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Intensive social skills and mindfulness training"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Functional Behavior Assessments (FBA) leading to Individualized Behavior Intervention Plans (BIP)"
+                />
+                 <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Parent collaboration and skill building"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Alternatives to out-of-school suspensions"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Referrals to outside counseling services"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Community and Service Learning Projects"
                 />
               </FormGroup>
           </Grid>
@@ -183,16 +313,16 @@ class Profile extends React.Component<any, any> {
               <br/>
               Tier II
               <br/>
-              <FormGroup row>
+              <FormGroup>
                 <FormControlLabel
                   control={
                     <Checkbox
                       checked={this.state.checkedA}
                       onChange={this.handleChange('checkedA')}
-                      value="checkedA"
+                      value="Increased academic supports and progress monitoring"
                     />
                   }
-                  label="Friends"
+                  label="Increased academic supports and progress monitoring"
                 />
                 <FormControlLabel
                   control={
@@ -203,35 +333,143 @@ class Profile extends React.Component<any, any> {
                       color="primary"
                     />
                   }
-                  label="Family"
+                  label="Focused social skills training and mindfulness training"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Referrals for Restorative Justice/Restorative Circles"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Check-in/Check-out with Daily Progress Reports"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Parent collaboration and skill building"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Alternatives to out-of-school suspensions"
+                />
+                 <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange('checkedB')}
+                      value="checkedB"
+                      color="primary"
+                    />
+                  }
+                  label="Community and Service Learning Projects"
                 />
               </FormGroup>
               <br/>
           </Grid>
-          <Grid item xs={12} sm={1} md={2} lg={4}>
-            Intensive academic supports and progress monitoring (Student Assistance Teams, I.E.P.s, and 504 plans)
-            <br/>
-            <br/>
-            Intensive social skills training
-            <br/>
-            <br/>
-            Functional Behavior Assessments (FBA) leading to Individualized Behavior Intervention Plans (BIP)
-            <br/>
-            <br/>
-            Multi-Agency collaboration for wrap-around services (mental health, Child Protective Services, physicians, etc)
-            <br/>
-            <br/>
-            Outside counseling interventions- i.e. Cognitive Behavioral Therapy
-            <br/>
-            <br/>
-            Parent collaboration and skill building
-            <br/>
-            <br/>
-            Alternatives to suspensions and expulsions- change of placement
-            <br/>
-            <br/>
-            Community and Service Learning Projects
-            <br/>
+          <Grid item xs={6} sm={6} md={6} lg={6}>
+              <br/>
+              <br/>
+              Tier I
+              <br/>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="Increased academic supports and progress monitoring"
+                    />
+                  }
+                  label="Standards-based academics"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="Increased academic supports and progress monitoring"
+                    />
+                  }
+                  label="School-wide evidence-based social/emotional learning"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="Increased academic supports and progress monitoring"
+                    />
+                  }
+                  label="3-5 easy to understand school behavior expectations"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="Increased academic supports and progress monitoring"
+                    />
+                  }
+                  label="Effective classroom management"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="Increased academic supports and progress monitoring"
+                    />
+                  }
+                  label="Active supervision and monitoring by staff"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="Increased academic supports and progress monitoring"
+                    />
+                  }
+                  label="Community and service-learning projects"
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange('checkedA')}
+                      value="Increased academic supports and progress monitoring"
+                    />
+                  }
+                  label="Leadership opportunities"
+                />
+              </FormGroup>
             <br/>
           </Grid>
           </Grid>
@@ -258,5 +496,5 @@ const mapDispatchToProps = (dispatch:any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Profile)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Student)));
 
