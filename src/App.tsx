@@ -189,8 +189,8 @@ class Naca extends React.Component<any, any> {
                 <Route exact path="/login" component={Login} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
                 <Route exact path="/students" component={Students} />
-                <Route path="/students/:student_id" component={Student} />
-                <Route path="/students/:student_id/test/results" component={StudentTestResults} />
+                <Route path="/teacher/students/:student_id/exam/:test_id/results" component={StudentTestResults} />
+                <Route path="/teacher/students/:student_id" component={Student} />
                 <Route path="/teacher/students/:student_id/edit" component={StudentEdit} />
               </Switch>
               <br/>

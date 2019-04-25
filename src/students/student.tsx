@@ -125,7 +125,7 @@ class Student extends React.Component<any, any> {
                 <ListItem>
                   <ListItemText primary="#vent"></ListItemText>
                 </ListItem>
-                <ListItem component={({innerRef,...props}) => <Link {...props} to="/student/1/exam/1/results">Here</Link>}></ListItem>
+                <ListItem component={({innerRef,...props}) => <Link {...props} to="/teacher/students/1/exam/1/results">Here</Link>}></ListItem>
             </List>
             <br/>
             Suggested interventions

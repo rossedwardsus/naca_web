@@ -78,30 +78,7 @@ class StudentTestResults extends React.Component<any, any> {
       <div>
           <Grid container spacing={24} className={classes.grid}>
               <Grid item xs={6} sm={6} md={6} lg={6}>
-                  Jason Angelo
-                  <br/>
-                  Severity: Tier 1
-                  <br/>
-                  Grade Level: 4
-                  <br/>
-                  Teacher: Smith
-                  <br/>
-                  <br/>
-                  Counselor: Benedict Alder
-                  <br/>
-                  Gender: Male
-                  <br/>
-                  Race: Caucasion
-                  <br/>
-                  Age: 10
-                  <br/>
-                  City: Morgantown
-                  <br/>
-                  State: West Virginia
-                  <br/>
-                  Attendance: 90% or higher
-                  <br/>
-                  <Button>Login</Button>
+                  Test results
                   <br/>
           </Grid>
           <Grid item xs={6} sm={6} md={6} lg={6}>
