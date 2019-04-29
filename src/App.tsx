@@ -24,6 +24,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 import Quiz from "./quiz/take_quiz";
 import Login from "./auth/login";
+import Signup from "./auth/signup";
 
 //import RequestInvite from "./auth/request_account";
 //import ApproveAccount from "./auth/approve_request";
@@ -201,6 +202,7 @@ class Naca extends React.Component<any, any> {
                 <Route exact path="/" component={Quiz} />
                 <Route exact path="/quiz" component={Quiz} />
                 <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
                 <Route exact path="/teacher/students" component={TeacherStudents} />
                 <Route exact path="/teacher/student/add" component={TeacherStudentAdd} />

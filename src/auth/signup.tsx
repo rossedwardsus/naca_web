@@ -73,7 +73,7 @@ class Signup extends React.Component<any, any> {
 
   render(){
 
-    const {questions, match, classes} = this.props;
+    const {match, classes} = this.props;
     return (
       <div>
           <TextField
@@ -156,7 +156,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
-    questions: state.questions.questions
+    //questions: state.questions.questions
   };
 };
 
