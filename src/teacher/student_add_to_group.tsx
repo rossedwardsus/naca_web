@@ -102,25 +102,36 @@ class Classroom extends React.Component<any, any> {
       <div>
           Search
           <br/>
-           <TextField
-                id="standard-name"
-                label="Search Students"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal" />
-          <br/>
-          <br/>
           List of students and their scores/attendance
           <br/>
-          <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
-          <br/>
+          <Link to="/students/1">Student1</Link>
           <br/>
           <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
+          Add student
           <br/>
           <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
+          <br/>
+          <br/>
+          <TextField
+                id="standard-name"
+                label="Name"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}/>
+
+          <br/>
+          <TextField
+                id="standard-name"
+                label="Grade"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}/>
+          <br/>
+          <Button onClick={this.nextQuestion}>Add Student</Button>
+          <br/>
+          <Button onClick={this.nextQuestion}>Add Group</Button>
       </div>
     );
   }

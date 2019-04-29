@@ -47,7 +47,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Classroom extends React.Component<any, any> {
+class AddStudentGrouping extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -100,25 +100,17 @@ class Classroom extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Search
+          Add Student Grouping
           <br/>
-           <TextField
+          <br/>
+          <br/>
+          <TextField
                 id="standard-name"
-                label="Search Students"
+                label="Student Grouping"
                 className={classes.textField}
                 value={this.state.dicussion_text}
-                margin="normal" />
-          <br/>
-          <br/>
-          List of students and their scores/attendance
-          <br/>
-          <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
-          <br/>
-          <br/>
-          <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
-          <br/>
+                margin="normal"
+                multiline={true}/>
           <br/>
           <Link to="/teacher/group/add">Add Group</Link>
       </div>
@@ -146,5 +138,5 @@ const mapDispatchToProps = (dispatch: any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(AddStudentGrouping)));
 

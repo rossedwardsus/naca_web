@@ -6,17 +6,11 @@ import { withStyles, Theme, StyleRulesCallback } from '@material-ui/core/styles/
 import { withRouter } from 'react-router-dom'
 
 import TextField from '@material-ui/core/TextField';
-import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 
 //interface Identifiable { todo_id: string, url: string; }
@@ -38,24 +32,17 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
   menu: {
     width: 200,
   },
-  formControl: {
-    margin: theme.spacing.unit * 3,
-  },
-  group: {
-    margin: `${theme.spacing.unit}px 0`,
-  },
 });
 
 
-class Classroom extends React.Component<any, any> {
+class RequestAccount extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
     super(props);
     this.state = {
-      quiz: {},
-      current_question: 0,
-      quiz_question_answer: ""
+      email: "",
+      password: ""
     }
   }
 
@@ -65,62 +52,88 @@ class Classroom extends React.Component<any, any> {
     //alert(this.props.match.params.list_id);
     //alert(JSON.stringify(this.props));
 
-    this.setState({quiz: this.props.quiz});
-
   }
-
-  componentDidUpdate = () => {
-
-    //alert(JSON.stringify(this.props));
-    //alert(this.props.match.params.list_id);
-    //alert(JSON.stringify(this.props));
-
-  }
-
-  handleChange = (e:any) => {
+  onFirstNameChange = () => {
 
       //alert(e.target.value);
 
-      this.setState({quiz_question_answer: e.target.value});
+  }
+
+  onEmailChange = () => {
+
+      //alert(e.target.value);
 
   }
 
-  nextQuestion = () => {
+  onPasswordChange = () => {
 
-      this.props.saveQuestionAnswer(this.state.answer);
       //alert(e.target.value);
-      //this.props.nextQuestion(this.state.current_question + 1)
-      ///this.state.question == 
 
   }
 
   render(){
 
-    const {match, classes} = this.props;
-    const {quiz} = this.state;
+    const {questions, match, classes} = this.props;
     return (
       <div>
-          Search
-          <br/>
-           <TextField
+          <TextField
                 id="standard-name"
-                label="Search Students"
+                label="First Name"
                 className={classes.textField}
                 value={this.state.dicussion_text}
-                margin="normal" />
+                margin="normal"
+                multiline={true}
+                onChange={this.onEmailChange}/>
+
           <br/>
+          <TextField
+                id="standard-name"
+                label="Last Name"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onPasswordChange}/>
           <br/>
-          List of students and their scores/attendance
+          <TextField
+                id="standard-name"
+                label="School"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onPasswordChange}/>
           <br/>
+          <TextField
+                id="standard-name"
+                label="Email"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onEmailChange}/>
+
           <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
+          <TextField
+                id="standard-name"
+                label="Password"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onPasswordChange}/>
           <br/>
+          <TextField
+                id="standard-name"
+                label="Password Again"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onPasswordChange}/>
           <br/>
+          <Button>Request Invite</Button>
           <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
-          <br/>
-          <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
       </div>
     );
   }
@@ -132,13 +145,13 @@ const mapStateToProps = (state: any, ownProps: any) => {
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
-    quiz: state.quizes.quizes[0]
+    questions: state.questions.questions
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    nextQuestion: (previousQuestion: any) => {
+    onAddTodo: (title: any, description: any) => {
       //dispatch(addTodo(title, description));
     }
   };
@@ -146,5 +159,5 @@ const mapDispatchToProps = (dispatch: any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(RequestAccount)));
 

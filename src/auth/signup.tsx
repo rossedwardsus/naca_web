@@ -95,6 +95,25 @@ class Signup extends React.Component<any, any> {
                 multiline={true}
                 onChange={this.onPasswordChange}/>
           <br/>
+           <TextField
+                id="standard-name"
+                label="School Name"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onEmailChange}/>
+
+          <br/>
+          <TextField
+                id="standard-name"
+                label="District"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onPasswordChange}/>
+          <br/>
           <TextField
                 id="standard-name"
                 label="Email"
@@ -114,6 +133,16 @@ class Signup extends React.Component<any, any> {
                 multiline={true}
                 onChange={this.onPasswordChange}/>
           <br/>
+          <TextField
+                id="standard-name"
+                label="Password Again"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onPasswordChange}/>
+          <br/>
+
           <Button>Signup</Button>
           <br/>
       </div>

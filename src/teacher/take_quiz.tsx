@@ -47,7 +47,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Classroom extends React.Component<any, any> {
+class TakeQuiz extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -100,27 +100,27 @@ class Classroom extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Search
+          <FormControl component={"fieldset" as "div"} className={classes.formControl}>
+          <FormLabel component={"legend" as "menu"}>{quiz.quiz_question}</FormLabel>    
+          <RadioGroup
+                aria-label="Gender"
+                name="gender1"
+                value={this.state.quiz_question_answer}
+                onChange={this.handleChange}
+              >                
           <br/>
-           <TextField
-                id="standard-name"
-                label="Search Students"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal" />
+          {quiz.quiz_choices != undefined && quiz.quiz_choices.map((choice: any) => 
+                                
+                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice.text}/>
+                                
+                                )}
+          <br/>
+          </RadioGroup>
+          </FormControl>
           <br/>
           <br/>
-          List of students and their scores/attendance
-          <br/>
-          <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
-          <br/>
-          <br/>
-          <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
-          <br/>
-          <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
+          <Button onClick={this.nextQuestion}>take Quiz</Button>
+         
       </div>
     );
   }
@@ -128,7 +128,7 @@ class Classroom extends React.Component<any, any> {
 
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
-  //alert("add " + JSON.stringify(state));
+  //alert("add " + JSON.stringify(state.quizes.quizes));
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
@@ -146,5 +146,5 @@ const mapDispatchToProps = (dispatch: any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(TakeQuiz)));
 

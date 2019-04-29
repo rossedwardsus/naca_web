@@ -24,11 +24,18 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
 import Quiz from "./quiz/take_quiz";
 import Login from "./auth/login";
+
+//import RequestInvite from "./auth/request_account";
+//import ApproveAccount from "./auth/approve_request";
+
 import Classroom from "./classroom/classroom";
-import Students from "./students/students";
-import Student from "./students/student";
-import StudentEdit from "./students/student_edit";
-import StudentTestResults from "./students/student_test_results";
+import TeacherStudents from "./teacher/students";
+import TeacherStudent from "./teacher/student";
+import TeacherStudentEdit from "./students/student_edit";
+import TeacherStudentTests from "./teacher/student_tests";
+import TeacherStudentTestResults from "./teacher/student_test_results";
+import TeacherStudentAdd from "./teacher/student_add";
+import TeacherGroupAdd from "./teacher/add_student_grouping";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -40,7 +47,7 @@ const styles = {
   root: {
     flexGrow: 1,
     bottom: 0,
-  },
+ },
   grow: {
     flexGrow: 1,
   },
@@ -149,7 +156,12 @@ class Naca extends React.Component<any, any> {
           <Grid container spacing={24}>
               <Grid item xs={12} sm={1} md={2} lg={4}>
                 <br/>
-                If not logged in as a teacher dont show this
+                <Link to="/request_invite">Request Invite</Link>
+                <br/>
+                <br/>
+                If not logged in as a
+                <br/>
+                teacher dont show this
                 <br/>
                 <br/>
                 Choose a quiz:
@@ -170,11 +182,13 @@ class Naca extends React.Component<any, any> {
                 <Link to="/classrooms/12">Class 12</Link>
                 <br/>
                 <br/>
-                <Link to="/students/">Students</Link>
+                <br/>
+                <Link to="/teacher/students/">Students</Link>
                 <br/>
                 <Link to="/teacher/students/1">Student 1</Link>
                 <br/>
-                <Link to="/quiz/results">View Quiz</Link>
+                <Link to="/teacher/student/tests">Student Test</Link>
+                <br/>
                 <br/>
                 <Link to="/login">Login</Link>
               </Grid>
@@ -188,10 +202,13 @@ class Naca extends React.Component<any, any> {
                 <Route exact path="/quiz" component={Quiz} />
                 <Route exact path="/login" component={Login} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
-                <Route exact path="/students" component={Students} />
-                <Route path="/teacher/students/:student_id/exam/:test_id/results" component={StudentTestResults} />
-                <Route path="/teacher/students/:student_id" component={Student} />
-                <Route path="/teacher/students/:student_id/edit" component={StudentEdit} />
+                <Route exact path="/teacher/students" component={TeacherStudents} />
+                <Route exact path="/teacher/student/add" component={TeacherStudentAdd} />
+                <Route exact path="/teacher/student/tests" component={TeacherStudentTests} />
+                <Route exact path="/teacher/group/add" component={TeacherGroupAdd} />
+                <Route path="/teacher/students/:student_id/exam/:test_id/results" component={TeacherStudentTestResults} />
+                <Route path="/teacher/students/:student_id" component={TeacherStudent} />
+                <Route path="/teacher/students/:student_id/edit" component={TeacherStudentEdit} />
               </Switch>
               <br/>
             </Grid>

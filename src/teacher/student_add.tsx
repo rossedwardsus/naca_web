@@ -47,7 +47,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Classroom extends React.Component<any, any> {
+class StudentAdd extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -100,27 +100,71 @@ class Classroom extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Search
           <br/>
-           <TextField
+          Add student
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <TextField
                 id="standard-name"
-                label="Search Students"
+                label="Name"
                 className={classes.textField}
                 value={this.state.dicussion_text}
-                margin="normal" />
+                margin="normal"
+                multiline={true}/>
+
+          <br/>
+          <TextField
+                id="standard-name"
+                label="Grade Level"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}/>
+          <br/>
+          <TextField
+                id="standard-name"
+                label="Gender"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}/>
           <br/>
           <br/>
-          List of students and their scores/attendance
+          Is this the student’s gender of birth?
           <br/>
           <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
+          <TextField
+                id="standard-name"
+                label="Race"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}/>
           <br/>
           <br/>
+          <TextField
+                id="standard-name"
+                label="Age"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}/>
           <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
+          <br/>
+          <TextField
+                id="standard-name"
+                label="State"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}/>
           <br/>
           <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
+          <Button onClick={this.nextQuestion}>Add Student</Button>
+          <br/>
+          <Button onClick={this.nextQuestion}>Add Group</Button>
       </div>
     );
   }
@@ -146,5 +190,5 @@ const mapDispatchToProps = (dispatch: any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(StudentAdd)));
 
