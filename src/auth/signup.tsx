@@ -82,7 +82,6 @@ class Signup extends React.Component<any, any> {
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
                 onChange={this.onEmailChange}/>
 
           <br/>
@@ -92,7 +91,6 @@ class Signup extends React.Component<any, any> {
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
                 onChange={this.onPasswordChange}/>
           <br/>
            <TextField
@@ -101,7 +99,6 @@ class Signup extends React.Component<any, any> {
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
                 onChange={this.onEmailChange}/>
 
           <br/>
@@ -111,7 +108,6 @@ class Signup extends React.Component<any, any> {
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
                 onChange={this.onPasswordChange}/>
           <br/>
           <TextField
@@ -120,7 +116,6 @@ class Signup extends React.Component<any, any> {
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
                 onChange={this.onEmailChange}/>
 
           <br/>
@@ -130,7 +125,6 @@ class Signup extends React.Component<any, any> {
                 className={classes.textField}
                 value={this.state.dicussion_text}
                 margin="normal"
-                multiline={true}
                 onChange={this.onPasswordChange}/>
           <br/>
           <TextField
@@ -142,7 +136,6 @@ class Signup extends React.Component<any, any> {
                 multiline={true}
                 onChange={this.onPasswordChange}/>
           <br/>
-
           <Button>Signup</Button>
           <br/>
       </div>

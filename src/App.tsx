@@ -37,6 +37,7 @@ import TeacherStudentTests from "./teacher/student_tests";
 import TeacherStudentTestResults from "./teacher/student_test_results";
 import TeacherStudentAdd from "./teacher/student_add";
 import TeacherGroupAdd from "./teacher/add_student_grouping";
+import GroupTestAdd from "./teacher/group_test_add";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -190,6 +191,8 @@ class Naca extends React.Component<any, any> {
                 <br/>
                 <Link to="/teacher/student/tests">Student Test</Link>
                 <br/>
+                <Link to="/teacher/student/tests/group">Create Group Test</Link>
+                <br/>
                 <br/>
                 <Link to="/login">Login</Link>
               </Grid>
@@ -207,6 +210,7 @@ class Naca extends React.Component<any, any> {
                 <Route exact path="/teacher/students" component={TeacherStudents} />
                 <Route exact path="/teacher/student/add" component={TeacherStudentAdd} />
                 <Route exact path="/teacher/student/tests" component={TeacherStudentTests} />
+                <Route exact path="/teacher/student/tests/group" component={GroupTestAdd} />
                 <Route exact path="/teacher/group/add" component={TeacherGroupAdd} />
                 <Route path="/teacher/students/:student_id/exam/:test_id/results" component={TeacherStudentTestResults} />
                 <Route path="/teacher/students/:student_id" component={TeacherStudent} />
