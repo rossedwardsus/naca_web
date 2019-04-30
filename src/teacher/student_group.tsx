@@ -17,7 +17,10 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
+import {addStudentToGroup} from "../actions/teachers";
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -47,7 +50,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Classroom extends React.Component<any, any> {
+class StudentGroup extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -77,7 +80,7 @@ class Classroom extends React.Component<any, any> {
 
   }
 
-  handleChange = (e:any) => {
+  handleChange = (e: any) => {
 
       //alert(e.target.value);
 
@@ -85,9 +88,15 @@ class Classroom extends React.Component<any, any> {
 
   }
 
-  nextQuestion = () => {
+  onStudentChange = (e: any) => {
 
-      this.props.saveQuestionAnswer(this.state.answer);
+      this.setState({student_id: e.target.value})
+
+  }
+
+  addStudentToGroup = () => {
+
+      //this.props.addStudentToGroup(this.state.group_id, this.state.student_id);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
@@ -100,56 +109,79 @@ class Classroom extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Search
-          <br/>
-           <TextField
-                id="standard-name"
-                label="Search Students"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal" />
+          Group:
           <br/>
           <br/>
-          List of students and their scores/attendance
+          Students in this group
           <br/>
-          {students.map((student: any) => <div>{student.student_first_name}</div>)}
+          <Link to="/teachers/students/1">Student1</Link>
+          <br/>
+          {students.map((student: any) => <div>{student.student_id}</div>)}
+          <br/>
+          <Select
+            value={this.state.age}
+            onChange={this.handleChange}
+            inputProps={{
+              name: 'age',
+              id: 'age-simple',
+            }}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Student1</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
           <br/>
           <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
+          <Button onClick={this.addStudentToGroup}>Add Student</Button>
           <br/>
           <br/>
+          Students who have taken Naca
           <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
-          <br/>
-          <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
-      </div>
+          Students attendance record
+        </div>
     );
   }
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
-  alert("add " + JSON.stringify(state.teacher.teacher));
+  alert("add " + JSON.stringify(state.teacher.teacher.students));
+  alert("add " + JSON.stringify(state.teacher.teacher.groups[0].students));
 
-  //let students = state.teacher.students
+  let teachers_students = state.teacher.teacher.students;
+  let students_in_group = state.teacher.teacher.groups[0].students;
+  
+  //filter through students and return students whos student id is in the list
+  //use reselect
+  //get students name[{id:1},{id:2},{id:3},{id:4}].findIndex(obj => obj.id == 3, 4, 5)
+  let students = teachers_students.filter((student: any) => { 
+        if (students_in_group.includes(student.student_id)){ 
+            return student;
+        }
+  });
+
+  alert(JSON.stringify(students));
+  
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
     //quiz: state.quizes.quizes[0]
-    students: state.teacher.teacher.students
+    students: students
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    nextQuestion: (previousQuestion: any) => {
-      //dispatch(addTodo(title, description));
+    addStudentToGroup: (group_id: any, student_id: any) => {
+      dispatch(addStudentToGroup(group_id, student_id))
     }
   };
 };
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(StudentGroup)));
 

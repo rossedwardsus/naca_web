@@ -47,7 +47,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Classroom extends React.Component<any, any> {
+class StudentGroups extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -96,33 +96,14 @@ class Classroom extends React.Component<any, any> {
 
   render(){
 
-    const {students, match, classes} = this.props;
+    const {groups, match, classes} = this.props;
     const {quiz} = this.state;
     return (
       <div>
-          Search
-          <br/>
-           <TextField
-                id="standard-name"
-                label="Search Students"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal" />
+          Groups
           <br/>
           <br/>
-          List of students and their scores/attendance
-          <br/>
-          {students.map((student: any) => <div>{student.student_first_name}</div>)}
-          <br/>
-          <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
-          <br/>
-          <br/>
-          <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
-          <br/>
-          <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
+          {groups.map((group: any) => <div><Link to="/teacher/students/groups/1">{group.group_name}</Link></div>)}
       </div>
     );
   }
@@ -131,13 +112,11 @@ class Classroom extends React.Component<any, any> {
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
   alert("add " + JSON.stringify(state.teacher.teacher));
-
-  //let students = state.teacher.students
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
     //quiz: state.quizes.quizes[0]
-    students: state.teacher.teacher.students
+    groups: state.teacher.teacher.groups
   };
 };
 
@@ -151,5 +130,5 @@ const mapDispatchToProps = (dispatch: any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(StudentGroups)));
 

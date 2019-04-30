@@ -3,12 +3,14 @@ import login from './login'
 import profile from './profile'
 import quizes from './quiz'
 import student_quiz_answers from './student_quiz_answers'
+import teacher from './teacher'
 
 export default combineReducers({
   login: login,
   profile: profile,
   quizes: quizes,
-  student_quiz_answers: student_quiz_answers 
+  student_quiz_answers: student_quiz_answers,
+  teacher: teacher
 })
 
 

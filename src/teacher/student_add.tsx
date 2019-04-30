@@ -18,6 +18,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+import {addStudent} from "../actions/teachers";
+
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -55,7 +57,9 @@ class StudentAdd extends React.Component<any, any> {
     this.state = {
       quiz: {},
       current_question: 0,
-      quiz_question_answer: ""
+      quiz_question_answer: "",
+      student_first_name: "",
+      student_last_name: ""
     }
   }
 
@@ -76,6 +80,17 @@ class StudentAdd extends React.Component<any, any> {
     //alert(JSON.stringify(this.props));
 
   }
+  onFirstNameChange = (e: any) => {
+
+      this.setState({student_first_name: e.target.value})
+
+  }
+
+  onLastNameChange = (e: any) => {
+
+      this.setState({student_last_name: e.target.value})
+
+  }
 
   handleChange = (e:any) => {
 
@@ -85,12 +100,13 @@ class StudentAdd extends React.Component<any, any> {
 
   }
 
-  nextQuestion = () => {
+  addStudent = () => {
 
-      this.props.saveQuestionAnswer(this.state.answer);
+      this.props.addStudent(this.state.student_first_name, this.state.student_last_name);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
+      this.props.history.push("/teacher/students");
 
   }
 
@@ -108,11 +124,20 @@ class StudentAdd extends React.Component<any, any> {
           <br/>
           <TextField
                 id="standard-name"
-                label="Name"
+                label="First Name"
                 className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
+                value={this.state.student_first_name}
+                onChange={this.onFirstNameChange}
+                margin="normal"/>
+
+          <br/>
+          <TextField
+                id="standard-name"
+                label="Last Name"
+                className={classes.textField}
+                value={this.state.student_last_name}
+                onChange={this.onLastNameChange}
+                margin="normal"/>
 
           <br/>
           <TextField
@@ -120,19 +145,17 @@ class StudentAdd extends React.Component<any, any> {
                 label="Grade Level"
                 className={classes.textField}
                 value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
+                margin="normal"/>
           <br/>
           <TextField
                 id="standard-name"
                 label="Gender"
                 className={classes.textField}
                 value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
+                margin="normal"/>
           <br/>
           <br/>
-          Is this the student’s gender of birth?
+          Is this the student’s gender at birth?
           <br/>
           <br/>
           <TextField
@@ -162,9 +185,8 @@ class StudentAdd extends React.Component<any, any> {
                 multiline={true}/>
           <br/>
           <br/>
-          <Button onClick={this.nextQuestion}>Add Student</Button>
+          <Button onClick={this.addStudent}>Add Student</Button>
           <br/>
-          <Button onClick={this.nextQuestion}>Add Group</Button>
       </div>
     );
   }
@@ -176,14 +198,14 @@ const mapStateToProps = (state: any, ownProps: any) => {
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
-    quiz: state.quizes.quizes[0]
+    //quiz: state.quizes.quizes[0]
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    nextQuestion: (previousQuestion: any) => {
-      //dispatch(addTodo(title, description));
+    addStudent: (first_name: any, last_name: any) => {
+      dispatch(addStudent(first_name, last_name));
     }
   };
 };

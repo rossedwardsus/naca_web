@@ -13,7 +13,8 @@ export const AUTHENTICATE = 'AUTHENTICATE'
 export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER'
 export const ADD_STUDENT = 'ADD_STUDENT'
 export const GET_CLASSROOM = 'GET_CLASSROOM'
-
+export const ADD_GROUP = 'ADD_GROUP'
+export const ADD_STUDENT_TO_GROUP = 'ADD_STUDENT_TO_GROUP'
 
 export interface Todo {
   list_id?: string;

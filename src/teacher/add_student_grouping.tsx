@@ -18,6 +18,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+import {addGroup} from "../actions/teachers";
+
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -55,7 +57,8 @@ class AddStudentGrouping extends React.Component<any, any> {
     this.state = {
       quiz: {},
       current_question: 0,
-      quiz_question_answer: ""
+      quiz_question_answer: "",
+      group_name: ""
     }
   }
 
@@ -77,20 +80,22 @@ class AddStudentGrouping extends React.Component<any, any> {
 
   }
 
-  handleChange = (e:any) => {
+  onGroupNameChange = (e:any) => {
 
       //alert(e.target.value);
+      //this.props.onGroupNameChange(this.state.group_name);
 
-      this.setState({quiz_question_answer: e.target.value});
+      this.setState({group_name: e.target.value});
 
   }
 
-  nextQuestion = () => {
+  addGroup = () => {
 
-      this.props.saveQuestionAnswer(this.state.answer);
+      this.props.addGroup(this.state.group_name);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
+      this.props.history.push("/teacher/students/groups");
 
   }
 
@@ -108,11 +113,11 @@ class AddStudentGrouping extends React.Component<any, any> {
                 id="standard-name"
                 label="Student Grouping"
                 className={classes.textField}
-                value={this.state.dicussion_text}
+                value={this.state.group_name}
                 margin="normal"
-                multiline={true}/>
+                onChange={this.onGroupNameChange}/>
           <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
+          <Button onClick={this.addGroup}>Add Group</Button>
       </div>
     );
   }
@@ -130,8 +135,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    nextQuestion: (previousQuestion: any) => {
-      //dispatch(addTodo(title, description));
+    addGroup: (group_name: any) => {
+      dispatch(addGroup(group_name));
     }
   };
 };

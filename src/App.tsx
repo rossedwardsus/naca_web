@@ -38,6 +38,8 @@ import TeacherStudentTestResults from "./teacher/student_test_results";
 import TeacherStudentAdd from "./teacher/student_add";
 import TeacherGroupAdd from "./teacher/add_student_grouping";
 import GroupTestAdd from "./teacher/group_test_add";
+import TeacherStudentsGroups from "./teacher/student_groups";
+import TeacherStudentsGroup from "./teacher/student_group";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -185,11 +187,14 @@ class Naca extends React.Component<any, any> {
                 <br/>
                 <br/>
                 <br/>
-                <Link to="/teacher/students/">Students</Link>
+                <Link to="/teacher/students">Students</Link>
                 <br/>
                 <Link to="/teacher/students/1">Student 1</Link>
                 <br/>
                 <Link to="/teacher/student/tests">Student Test</Link>
+                <br/>
+                <br/>
+                <Link to="/teacher/students/groups">Groups</Link>
                 <br/>
                 <Link to="/teacher/student/tests/group">Create Group Test</Link>
                 <br/>
@@ -202,12 +207,14 @@ class Naca extends React.Component<any, any> {
               <br/>
               <br/>
               <Switch>
+                <Route path="/teacher/students/groups/:group_id" component={TeacherStudentsGroup} />
                 <Route exact path="/" component={Quiz} />
                 <Route exact path="/quiz" component={Quiz} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
                 <Route exact path="/teacher/students" component={TeacherStudents} />
+                <Route exact path="/teacher/students/groups" component={TeacherStudentsGroups} />
                 <Route exact path="/teacher/student/add" component={TeacherStudentAdd} />
                 <Route exact path="/teacher/student/tests" component={TeacherStudentTests} />
                 <Route exact path="/teacher/student/tests/group" component={GroupTestAdd} />
