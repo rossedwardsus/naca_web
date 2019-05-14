@@ -18,6 +18,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+import Grid from '@material-ui/core/Grid';
+
+
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -109,55 +112,63 @@ class Classroom extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Student Take Quiz
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Email"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"/>
+          <Grid container spacing={24}>
+              <Grid item xs={12} sm={1} md={2} lg={4}>
+                
+              </Grid>
+              <Grid item xs>
+                  Student Take Quiz
+                  <br/>
+                  <br/>
+                  <TextField
+                        id="standard-name"
+                        label="Email"
+                        className={classes.textField}
+                        value={this.state.dicussion_text}
+                        margin="normal"/>
 
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Password"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Quiz Number"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"/>
-          <br/>
-          <Button onClick={this.studentTakeQuiz}>Student Take Quiz</Button>
-          <br/>
-          <br/>
-          <br/>
-          Teacher Login
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Email"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal" />
+                  <br/>
+                  <TextField
+                        id="standard-name"
+                        label="Password"
+                        className={classes.textField}
+                        value={this.state.dicussion_text}
+                        margin="normal"/>
+                  <br/>
+                  <TextField
+                        id="standard-name"
+                        label="Quiz Number"
+                        className={classes.textField}
+                        value={this.state.dicussion_text}
+                        margin="normal"/>
+                  <br/>
+                  <Button onClick={this.studentTakeQuiz}>Student Take Quiz</Button>
+                  <br/>
+                  <br/>
+              </Grid>
+              <Grid item xs>
+                  <br/>
+                  Teacher Login
+                  <br/>
+                  <br/>
+                  <TextField
+                        id="standard-name"
+                        label="Email"
+                        className={classes.textField}
+                        value={this.state.dicussion_text}
+                        margin="normal" />
 
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Password"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"/>
-          <br/>
-          <Button onClick={this.teacherLogin}>Teacher Login</Button>
-         
+                  <br/>
+                  <TextField
+                        id="standard-name"
+                        label="Password"
+                        className={classes.textField}
+                        value={this.state.dicussion_text}
+                        margin="normal"/>
+                  <br/>
+                  <Button onClick={this.teacherLogin}>Teacher Login</Button>
+                </Grid>
+          </Grid>  
       </div>
     );
   }

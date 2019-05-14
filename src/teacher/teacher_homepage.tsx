@@ -18,7 +18,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-import axios from "axios"
+import Grid from '@material-ui/core/Grid';
+
+import axios from "axios";
+
+import Sidebar from '../sidebar/sidebar';
 
 
 //interface Identifiable { todo_id: string, url: string; }
@@ -119,36 +123,45 @@ class Classroom extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Search
-          <br/>
-           <TextField
-                id="standard-name"
-                label="Search Students"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal" />
-          <br/>
-          <br/>
-          List of students and their scores/attendance
-          <br/>
-          {students.map((student: any) => <div>{student.student_first_name}</div>)}
-          <br/>
-          <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
-          <br/>
-          <br/>
-          <br/>
-          <Link to="/teacher/student/add">Add Student</Link>
-          <br/>
-          <br/>
-          <Link to="/teacher/group/add">Add Group</Link>
+        <Grid container spacing={24}>
+              <Grid item xs={12} sm={1} md={1} lg={1}>
+              </Grid>
+              <Grid item xs={12} sm={1} md={2} lg={4}>
+                <Sidebar/>
+              </Grid>
+              <Grid item xs>
+                Search
+                <br/>
+                 <TextField
+                      id="standard-name"
+                      label="Search Students"
+                      className={classes.textField}
+                      value={this.state.dicussion_text}
+                      margin="normal" />
+                <br/>
+                <br/>
+                List of students and their scores/attendance
+                <br/>
+                {students.map((student: any) => <div>{student.student_first_name}</div>)}
+                <br/>
+                <br/>
+                <Link to="/teacher/students/1">Student First Name Student Last Name</Link>
+                <br/>
+                <br/>
+                <br/>
+                <Link to="/teacher/student/add">Add Student</Link>
+                <br/>
+                <br/>
+                <Link to="/teacher/group/add">Add Group</Link>
+              </Grid>
+          </Grid>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
+  //alert("add " + JSON.stringify(ownProps.match.path));
   //alert("add " + JSON.stringify(state.teacher.teacher));
 
   //let students = state.teacher.students
@@ -156,7 +169,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
     //quiz: state.quizes.quizes[0]
-    students: state.teacher.teacher.students
+    students: state.teacher.teacher.students,
+    path: ownProps.match.path
   };
 };
 

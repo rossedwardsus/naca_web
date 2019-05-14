@@ -134,7 +134,7 @@ class Classroom extends React.Component<any, any> {
           {students.map((student: any) => <div>{student.student_first_name}</div>)}
           <br/>
           <br/>
-          <Link to="/students/1">Student First Name Student Last Name</Link>
+          <Link to="/teacher/students/1">Student First Name Student Last Name</Link>
           <br/>
           <br/>
           <br/>

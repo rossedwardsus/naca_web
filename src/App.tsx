@@ -164,57 +164,6 @@ class Naca extends React.Component<any, any> {
           </Toolbar>
         </AppBar>
         <div className={classes.root}>
-          <Grid container spacing={24}>
-              <Grid item xs={12} sm={1} md={2} lg={4}>
-                <br/>
-                <Link to="/request_invite">Request Invite</Link>
-                <br/>
-                <br/>
-                If not logged in as a
-                <br/>
-                teacher dont show this
-                <br/>
-                <br/>
-                Choose a quiz:
-                <br/>
-                <Link to="/quiz">
-                  <Button variant="contained" color="primary">
-                      Quiz1
-                  </Button>
-                </Link>
-                <br/>
-                <br/>
-                <Link to="/teacher/student/tests/individual">Quiz</Link>
-                <br/>
-                <br/>
-                <Link to="/quiz">Create Class</Link>
-                <br/>
-                <br/>
-                <Link to="/classrooms/1">Class 1</Link>
-                <br/>
-                <Link to="/classrooms/12">Class 12</Link>
-                <br/>
-                <br/>
-                <br/>
-                <Link to="/teacher/students">Students</Link>
-                <br/>
-                <Link to="/teacher/students/1">Student 1</Link>
-                <br/>
-                <Link to="/teacher/student/tests">Student Test</Link>
-                <br/>
-                <br/>
-                <Link to="/teacher/students/groups">Groups</Link>
-                <br/>
-                <Link to="/teacher/student/tests/group">Create Group Test</Link>
-                <br/>
-                <br/>
-                <Link to="/login">Login</Link>
-              </Grid>
-            <Grid item xs>
-              <br/>
-              <br/>
-              <br/>
-              <br/>
               <Switch>
                 <Route path="/teacher/students/groups/:group_id" component={TeacherStudentsGroup} />
                 <Route exact path="/" component={Home} />
@@ -234,9 +183,6 @@ class Naca extends React.Component<any, any> {
                 <Route path="/teacher/students/:student_id" component={TeacherStudent} />
                 <Route path="/teacher/students/:student_id/edit" component={TeacherStudentEdit} />
               </Switch>
-              <br/>
-            </Grid>
-          </Grid>
         </div>
         
       </div>
