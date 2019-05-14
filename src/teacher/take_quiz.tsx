@@ -18,6 +18,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+import axios from 'axios';
+
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -55,7 +57,11 @@ class TakeQuiz extends React.Component<any, any> {
     this.state = {
       quiz: {},
       current_question: 0,
-      quiz_question_answer: ""
+      quiz_question_answer: "",
+      question_text: "",
+      question_type: "",
+      question_count: 0,
+      answers: []
     }
   }
 
@@ -64,6 +70,25 @@ class TakeQuiz extends React.Component<any, any> {
     //alert(JSON.stringify(this.props));
     //alert(this.props.match.params.list_id);
     //alert(JSON.stringify(this.props));
+
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege...' 
+    }
+
+    axios.post("http://localhost:5000/api/quiz/0868ce24-78fa-44af-ba43-3b3a40cc70e5/questions/1", { }, {headers: headers})
+        .then(res => {
+          //alert(JSON.stringify(res.data.question));
+          alert(JSON.stringify(res.data.answers));
+          
+          console.log(res.data);
+          this.setState({question_type: res.data.question.quiz_question_type});
+          this.setState({question_count: res.data.question.question_count});
+          this.setState({answers: res.data.answers})  
+
+        }).catch((error) => {
+          alert(error) //Logs a string: Error: Request failed with status code 404
+        })
 
     this.setState({quiz: this.props.quiz});
 
@@ -79,15 +104,44 @@ class TakeQuiz extends React.Component<any, any> {
 
   handleChange = (e:any) => {
 
-      //alert(e.target.value);
+      alert(e.target.value);
 
       this.setState({quiz_question_answer: e.target.value});
 
   }
 
-  nextQuestion = () => {
+  handleAnswerResponse = (e:any) => {
 
-      this.props.saveQuestionAnswer(this.state.answer);
+      alert(e.target.value);
+
+      //this.setState({quiz_question_answer: e.target.value});
+
+  }
+
+  saveResponse = () => {
+
+      //save and get next question 
+
+      let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege...' 
+      }
+
+      axios.post("http://localhost:5000/api/quiz/0868ce24-78fa-44af-ba43-3b3a40cc70e5/questions/1/response", {student_id: 1, quiz_question_response: "response" }, {headers: headers})
+        .then(res => {
+          alert(JSON.stringify(res));
+          console.log(res.data);
+          //localStorage.setItem("user", JSON.stringify({session_token: res.data.status.session_token}));
+          //redirect to homepage
+          //alert(JSON.parse(localStorage.getItem("user")).session_token);
+        }).catch((error) => {
+          alert(error) //Logs a string: Error: Request failed with status code 404
+        })
+
+      this.setState({quiz: this.props.quiz});
+
+
+      //this.props.saveQuestionAnswer(this.state.answer);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
@@ -97,7 +151,7 @@ class TakeQuiz extends React.Component<any, any> {
   render(){
 
     const {match, classes} = this.props;
-    const {quiz} = this.state;
+    const {quiz, question_type, answers} = this.state;
     return (
       <div>
           <FormControl component={"fieldset" as "div"} className={classes.formControl}>
@@ -118,8 +172,9 @@ class TakeQuiz extends React.Component<any, any> {
           </RadioGroup>
           </FormControl>
           <br/>
+          {question_type == "yes_no" ? <div><div>yes</div><div>no</div></div> : <div>{answers.map((answer: any) => <div><RadioGroup aria-label="Gender" name="gender1" value={this.state.quiz_question_answer} onChange={this.handleChange}><FormControlLabel value="female" control={<Radio value={answer.quiz_question_answer_number} />} label={answer.quiz_question_answer_text}/>hello{answer.quiz_question_answer_text}</RadioGroup></div>)}multiple choice</div>}
           <br/>
-          <Button onClick={this.nextQuestion}>take Quiz</Button>
+          <Button onClick={this.saveResponse}>take Quiz</Button>
          
       </div>
     );

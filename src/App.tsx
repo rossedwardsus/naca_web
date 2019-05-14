@@ -26,10 +26,13 @@ import Quiz from "./quiz/take_quiz";
 import Login from "./auth/login";
 import Signup from "./auth/signup";
 
+import Home from "./home/home";
+
 //import RequestInvite from "./auth/request_account";
 //import ApproveAccount from "./auth/approve_request";
 
 import Classroom from "./classroom/classroom";
+import TeacherHomepage from "./teacher/teacher_homepage";
 import TeacherStudents from "./teacher/students";
 import TeacherStudent from "./teacher/student";
 import TeacherStudentEdit from "./students/student_edit";
@@ -40,6 +43,7 @@ import TeacherGroupAdd from "./teacher/add_student_grouping";
 import GroupTestAdd from "./teacher/group_test_add";
 import TeacherStudentsGroups from "./teacher/student_groups";
 import TeacherStudentsGroup from "./teacher/student_group";
+import TakeQuiz from "./teacher/take_quiz";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -51,9 +55,12 @@ const styles = {
   root: {
     flexGrow: 1,
     bottom: 0,
- },
+  },
   grow: {
     flexGrow: 1,
+  },
+  appbar: {
+    alignItems: 'center',
   },
   menuButton: {
     marginLeft: -12,
@@ -176,7 +183,9 @@ class Naca extends React.Component<any, any> {
                   </Button>
                 </Link>
                 <br/>
-                <Link to="/quiz">Quiz</Link>
+                <br/>
+                <Link to="/teacher/student/tests/individual">Quiz</Link>
+                <br/>
                 <br/>
                 <Link to="/quiz">Create Class</Link>
                 <br/>
@@ -208,15 +217,17 @@ class Naca extends React.Component<any, any> {
               <br/>
               <Switch>
                 <Route path="/teacher/students/groups/:group_id" component={TeacherStudentsGroup} />
-                <Route exact path="/" component={Quiz} />
+                <Route exact path="/" component={Home} />
                 <Route exact path="/quiz" component={Quiz} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
+                <Route exact path="/teacher" component={TeacherHomepage} />
                 <Route exact path="/teacher/students" component={TeacherStudents} />
                 <Route exact path="/teacher/students/groups" component={TeacherStudentsGroups} />
                 <Route exact path="/teacher/student/add" component={TeacherStudentAdd} />
                 <Route exact path="/teacher/student/tests" component={TeacherStudentTests} />
+                <Route exact path="/teacher/student/tests/individual" component={TakeQuiz} />
                 <Route exact path="/teacher/student/tests/group" component={GroupTestAdd} />
                 <Route exact path="/teacher/group/add" component={TeacherGroupAdd} />
                 <Route path="/teacher/students/:student_id/exam/:test_id/results" component={TeacherStudentTestResults} />

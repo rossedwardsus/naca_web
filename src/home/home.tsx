@@ -17,10 +17,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 
-import {addStudentToGroup} from "../actions/teachers";
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -50,7 +47,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class StudentGroup extends React.Component<any, any> {
+class Classroom extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -80,7 +77,7 @@ class StudentGroup extends React.Component<any, any> {
 
   }
 
-  handleChange = (e: any) => {
+  handleChange = (e:any) => {
 
       //alert(e.target.value);
 
@@ -88,15 +85,18 @@ class StudentGroup extends React.Component<any, any> {
 
   }
 
-  onStudentChange = (e: any) => {
+  studentTakeQuiz = () => {
 
-      this.setState({student_id: e.target.value})
+      this.props.history.push("/quiz");
+      //alert(e.target.value);
+      //this.props.nextQuestion(this.state.current_question + 1)
+      ///this.state.question == 
 
   }
 
-  addStudentToGroup = () => {
+  teacherLogin = () => {
 
-      //this.props.addStudentToGroup(this.state.group_id, this.state.student_id);
+      this.props.history.push("/teacher");
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
@@ -105,94 +105,83 @@ class StudentGroup extends React.Component<any, any> {
 
   render(){
 
-    const {students, match, classes} = this.props;
+    const {match, classes} = this.props;
     const {quiz} = this.state;
     return (
       <div>
-          Group:
+          Student Take Quiz
           <br/>
           <br/>
-          Students in this group
+          <TextField
+                id="standard-name"
+                label="Email"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"/>
+
           <br/>
-          <Link to="/teachers/students/1">Student1</Link>
+          <TextField
+                id="standard-name"
+                label="Password"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"/>
           <br/>
-          {students.map((student: any) => <div>{student.student_id}</div>)}
+          <TextField
+                id="standard-name"
+                label="Quiz Number"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"/>
           <br/>
-          <Select
-            value={this.state.age}
-            onChange={this.handleChange}
-            inputProps={{
-              name: 'age',
-              id: 'age-simple',
-            }}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Student1</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
+          <Button onClick={this.studentTakeQuiz}>Student Take Quiz</Button>
           <br/>
           <br/>
-          <Button onClick={this.addStudentToGroup}>Add Student</Button>
+          <br/>
+          Teacher Login
           <br/>
           <br/>
-          Students in group who have taken Naca
+          <TextField
+                id="standard-name"
+                label="Email"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal" />
+
           <br/>
-          <Link to="/teachers/students/1/test/results">Student1</Link>
+          <TextField
+                id="standard-name"
+                label="Password"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"/>
           <br/>
-          Students attendance record
-        </div>
+          <Button onClick={this.teacherLogin}>Teacher Login</Button>
+         
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
-  //alert("add " + JSON.stringify(state.teacher.teacher.students));
-  //alert("add " + JSON.stringify(state.teacher.teacher.groups[0].students));
-
-  let teachers_students = state.teacher.teacher.students;
-  let students_in_group = state.teacher.teacher.groups[0].students;
-  //let students_in_group_naca_taken = if student.naca_results.length > 0
-  
-  //filter through students and return students whos student id is in the list
-  //use reselect
-  //get students name[{id:1},{id:2},{id:3},{id:4}].findIndex(obj => obj.id == 3, 4, 5)
-  let students = teachers_students.filter((student: any) => { 
-        if (students_in_group.includes(student.student_id)){ 
-            return student;
-        }
-  });
-
-  let students_naca_taken = teachers_students.filter((student: any) => { 
-        if (students.naca_results.length > 0){ 
-            return student;
-        }
-  });
-
-  //alert(JSON.stringify(students));
-  alert(JSON.stringify(students_naca_taken));
-  
+  //alert("add " + JSON.stringify(state));
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
-    //quiz: state.quizes.quizes[0]
-    students: students
-    //students_naca_taken: students_in_group_naca_taken
+    quiz: state.quizes.quizes[0]
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    addStudentToGroup: (group_id: any, student_id: any) => {
-      dispatch(addStudentToGroup(group_id, student_id))
+    nextQuestion: (previousQuestion: any) => {
+      //dispatch(addTodo(title, description));
     }
   };
 };
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(StudentGroup)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
 

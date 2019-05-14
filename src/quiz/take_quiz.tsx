@@ -18,6 +18,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+import {getQuiz} from '../actions/quiz';
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -66,6 +67,8 @@ class TakeQuiz extends React.Component<any, any> {
     //alert(JSON.stringify(this.props));
 
     this.setState({quiz: this.props.quiz});
+
+    //this.props.getQuiz()
 
   }
 
@@ -140,6 +143,9 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     nextQuestion: (previousQuestion: any) => {
       //dispatch(addTodo(title, description));
+    },
+    getQuiz: () => {
+      //dispatch(getQuiz());
     }
   };
 };

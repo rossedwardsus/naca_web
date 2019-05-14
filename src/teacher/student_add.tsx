@@ -20,6 +20,8 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 import {addStudent} from "../actions/teachers";
 
+import axios from "axios";
+
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -59,7 +61,12 @@ class StudentAdd extends React.Component<any, any> {
       current_question: 0,
       quiz_question_answer: "",
       student_first_name: "",
-      student_last_name: ""
+      student_last_name: "",
+      gender: "",
+      birth_gender: "",
+      state: "",
+      race: "",
+      grade: ""
     }
   }
 
@@ -92,6 +99,42 @@ class StudentAdd extends React.Component<any, any> {
 
   }
 
+  onAgeChange = (e: any) => {
+
+      this.setState({student_age: e.target.value})
+
+  }
+
+  onGenderChange = (e: any) => {
+
+      this.setState({student_gender: e.target.value})
+
+  }
+
+  onBirthGenderChange = (e: any) => {
+
+      this.setState({student_birth_gender: e.target.value})
+
+  }
+
+  onStateChange = (e: any) => {
+
+      this.setState({student_state: e.target.value})
+
+  }
+
+  onRaceChange = (e: any) => {
+
+      this.setState({student_race: e.target.value})
+
+  }
+
+  onGradeChange = (e: any) => {
+
+      this.setState({student_grade: e.target.value})
+
+  }
+
   handleChange = (e:any) => {
 
       //alert(e.target.value);
@@ -102,11 +145,28 @@ class StudentAdd extends React.Component<any, any> {
 
   addStudent = () => {
 
-      this.props.addStudent(this.state.student_first_name, this.state.student_last_name);
+      let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege...' 
+      }
+
+      axios.post("http://localhost:5000/api/teacher/1/students/add", {first_name: 1, last_name: 2, age: "age", grade_level: "grade", gender: "g", birth_gender: "true_false", dob: "dob", race: "race", state: "state"  }, {headers: headers})
+        .then(res => {
+          alert(JSON.stringify(res));
+          console.log(res.data);
+          //localStorage.setItem("user", JSON.stringify({session_token: res.data.status.session_token}));
+          //redirect to homepage
+          //alert(JSON.parse(localStorage.getItem("user")).session_token);
+        }).catch((error) => {
+          alert(error) //Logs a string: Error: Request failed with status code 404
+        })
+
+
+      //this.props.addStudent(this.state.student_first_name, this.state.student_last_name);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
-      this.props.history.push("/teacher/students");
+      //this.props.history.push("/teacher/students");
 
   }
 
@@ -145,6 +205,7 @@ class StudentAdd extends React.Component<any, any> {
                 label="Grade Level"
                 className={classes.textField}
                 value={this.state.dicussion_text}
+                onChange={this.onGradeChange}
                 margin="normal"/>
           <br/>
           <TextField
@@ -152,6 +213,7 @@ class StudentAdd extends React.Component<any, any> {
                 label="Gender"
                 className={classes.textField}
                 value={this.state.dicussion_text}
+                onChange={this.onGenderChange}
                 margin="normal"/>
           <br/>
           <br/>
@@ -163,6 +225,7 @@ class StudentAdd extends React.Component<any, any> {
                 label="Race"
                 className={classes.textField}
                 value={this.state.dicussion_text}
+                onChange={this.onBirthGenderChange}
                 margin="normal"
                 multiline={true}/>
           <br/>
@@ -172,6 +235,7 @@ class StudentAdd extends React.Component<any, any> {
                 label="Age"
                 className={classes.textField}
                 value={this.state.dicussion_text}
+                onChange={this.onAgeChange}
                 margin="normal"
                 multiline={true}/>
           <br/>

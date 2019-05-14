@@ -1,4 +1,4 @@
-import { ADD_STUDENT, ADD_NOTE, UPDATE_NOTE, SEARCH_NOTE } from '../actions/types';
+import { ADD_STUDENT, ADD_NOTE, ADD_SUGGESTED_INTERVENTION, UPDATE_NOTE, SEARCH_NOTE } from '../actions/types';
 
 export interface ITodo {
 	list_id: number;

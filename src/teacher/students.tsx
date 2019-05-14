@@ -18,6 +18,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
+import axios from "axios"
+
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -64,6 +66,23 @@ class Classroom extends React.Component<any, any> {
     //alert(JSON.stringify(this.props));
     //alert(this.props.match.params.list_id);
     //alert(JSON.stringify(this.props));
+
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege...' 
+      }
+
+      axios.post("http://localhost:5000/api/teacher/1/students", {"hello": "there"}, {headers: headers})
+        .then(res => {
+          alert(JSON.stringify(res));
+          console.log(res.data);
+          //localStorage.setItem("user", JSON.stringify({session_token: res.data.status.session_token}));
+          //redirect to homepage
+          //alert(JSON.parse(localStorage.getItem("user")).session_token);
+        }).catch((error) => {
+          alert(error) //Logs a string: Error: Request failed with status code 404
+        })
+
 
     this.setState({quiz: this.props.quiz});
 
@@ -130,7 +149,7 @@ class Classroom extends React.Component<any, any> {
 
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
-  alert("add " + JSON.stringify(state.teacher.teacher));
+  //alert("add " + JSON.stringify(state.teacher.teacher));
 
   //let students = state.teacher.students
   return {

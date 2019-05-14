@@ -17,10 +17,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
 
-import {addStudentToGroup} from "../actions/teachers";
+import axios from "axios"
+
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -50,7 +49,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class StudentGroup extends React.Component<any, any> {
+class Classroom extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -68,6 +67,23 @@ class StudentGroup extends React.Component<any, any> {
     //alert(this.props.match.params.list_id);
     //alert(JSON.stringify(this.props));
 
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'JWT fefege...' 
+      }
+
+      axios.post("http://localhost:5000/api/teacher/1/students", {"hello": "there"}, {headers: headers})
+        .then(res => {
+          alert(JSON.stringify(res));
+          console.log(res.data);
+          //localStorage.setItem("user", JSON.stringify({session_token: res.data.status.session_token}));
+          //redirect to homepage
+          //alert(JSON.parse(localStorage.getItem("user")).session_token);
+        }).catch((error) => {
+          //alert(error) //Logs a string: Error: Request failed with status code 404
+        })
+
+
     this.setState({quiz: this.props.quiz});
 
   }
@@ -80,7 +96,7 @@ class StudentGroup extends React.Component<any, any> {
 
   }
 
-  handleChange = (e: any) => {
+  handleChange = (e:any) => {
 
       //alert(e.target.value);
 
@@ -88,15 +104,9 @@ class StudentGroup extends React.Component<any, any> {
 
   }
 
-  onStudentChange = (e: any) => {
+  nextQuestion = () => {
 
-      this.setState({student_id: e.target.value})
-
-  }
-
-  addStudentToGroup = () => {
-
-      //this.props.addStudentToGroup(this.state.group_id, this.state.student_id);
+      this.props.saveQuestionAnswer(this.state.answer);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
@@ -109,90 +119,56 @@ class StudentGroup extends React.Component<any, any> {
     const {quiz} = this.state;
     return (
       <div>
-          Group:
+          Search
+          <br/>
+           <TextField
+                id="standard-name"
+                label="Search Students"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal" />
           <br/>
           <br/>
-          Students in this group
+          List of students and their scores/attendance
           <br/>
-          <Link to="/teachers/students/1">Student1</Link>
-          <br/>
-          {students.map((student: any) => <div>{student.student_id}</div>)}
-          <br/>
-          <Select
-            value={this.state.age}
-            onChange={this.handleChange}
-            inputProps={{
-              name: 'age',
-              id: 'age-simple',
-            }}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>Student1</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
+          {students.map((student: any) => <div>{student.student_first_name}</div>)}
           <br/>
           <br/>
-          <Button onClick={this.addStudentToGroup}>Add Student</Button>
+          <Link to="/students/1">Student First Name Student Last Name</Link>
           <br/>
           <br/>
-          Students in group who have taken Naca
           <br/>
-          <Link to="/teachers/students/1/test/results">Student1</Link>
+          <Link to="/teacher/student/add">Add Student</Link>
           <br/>
-          Students attendance record
-        </div>
+          <br/>
+          <Link to="/teacher/group/add">Add Group</Link>
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
-  //alert("add " + JSON.stringify(state.teacher.teacher.students));
-  //alert("add " + JSON.stringify(state.teacher.teacher.groups[0].students));
+  //alert("add " + JSON.stringify(state.teacher.teacher));
 
-  let teachers_students = state.teacher.teacher.students;
-  let students_in_group = state.teacher.teacher.groups[0].students;
-  //let students_in_group_naca_taken = if student.naca_results.length > 0
-  
-  //filter through students and return students whos student id is in the list
-  //use reselect
-  //get students name[{id:1},{id:2},{id:3},{id:4}].findIndex(obj => obj.id == 3, 4, 5)
-  let students = teachers_students.filter((student: any) => { 
-        if (students_in_group.includes(student.student_id)){ 
-            return student;
-        }
-  });
-
-  let students_naca_taken = teachers_students.filter((student: any) => { 
-        if (students.naca_results.length > 0){ 
-            return student;
-        }
-  });
-
-  //alert(JSON.stringify(students));
-  alert(JSON.stringify(students_naca_taken));
-  
+  //let students = state.teacher.students
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
     //quiz: state.quizes.quizes[0]
-    students: students
-    //students_naca_taken: students_in_group_naca_taken
+    students: state.teacher.teacher.students
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    addStudentToGroup: (group_id: any, student_id: any) => {
-      dispatch(addStudentToGroup(group_id, student_id))
+    nextQuestion: (previousQuestion: any) => {
+      //dispatch(addTodo(title, description));
     }
   };
 };
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(StudentGroup)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
 

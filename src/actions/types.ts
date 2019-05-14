@@ -16,6 +16,10 @@ export const GET_CLASSROOM = 'GET_CLASSROOM'
 export const ADD_GROUP = 'ADD_GROUP'
 export const ADD_STUDENT_TO_GROUP = 'ADD_STUDENT_TO_GROUP'
 
+export const GET_QUIZ = 'GET_QUIZ'
+
+export const ADD_SUGGESTED_INTERVENTION = 'ADD_SUGGESTED_INTERVENTION'
+
 export interface Todo {
   list_id?: string;
   list_name?: string;
