@@ -122,7 +122,7 @@ class TakeQuiz extends React.Component<any, any> {
 
       width: "100%",
       height: "800px",
-      backgroundImage: "url(\"http://localhost:3000/Quizintro.jpg\")"
+      backgroundImage: "url(\"/Quizintro.jpg\")"
 
     }
 
