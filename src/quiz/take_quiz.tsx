@@ -97,13 +97,7 @@ class TakeQuiz extends React.Component<any, any> {
 
   }
 
-  render(){
-
-    const {match, classes} = this.props;
-    const {quiz} = this.state;
-    return (
-      <div>
-          <FormControl component={"fieldset" as "div"} className={classes.formControl}>
+  /*<FormControl component={"fieldset" as "div"} className={classes.formControl}>
           <FormLabel component={"legend" as "menu"}>{quiz.quiz_question}</FormLabel>    
           <RadioGroup
                 aria-label="Gender"
@@ -119,10 +113,50 @@ class TakeQuiz extends React.Component<any, any> {
                                 )}
           <br/>
           </RadioGroup>
-          </FormControl>
+          </FormControl>*/
+ 
+  
+  render(){
+
+    let divStyle = {
+
+      width: "100%",
+      height: "800px",
+      backgroundImage: "url(\"http://localhost:3000/Quizintro.jpg\")"
+
+    }
+
+
+    const {match, classes} = this.props;
+    const {quiz} = this.state;
+    return (
+      <div style={divStyle}>
           <br/>
           <br/>
-          <Button onClick={this.nextQuestion}>take Quiz</Button>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Button style={{ fontSize: '63px' }} onClick={this.nextQuestion}>Take Quiz</Button>
          
       </div>
     );
