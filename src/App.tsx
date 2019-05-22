@@ -22,7 +22,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 
-import Quiz from "./quiz/take_quiz";
+import QuizTake from "./quiz/quiz_take";
+import QuizIntro from "./quiz/quiz_intro";
+
 import Login from "./auth/login";
 import Signup from "./auth/signup";
 
@@ -167,7 +169,8 @@ class Naca extends React.Component<any, any> {
               <Switch>
                 <Route path="/teacher/students/groups/:group_id" component={TeacherStudentsGroup} />
                 <Route exact path="/" component={Home} />
-                <Route exact path="/quiz" component={Quiz} />
+                <Route exact path="/quiz/intro" component={QuizIntro} />
+                <Route exact path="/quiz/take" component={QuizTake} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />

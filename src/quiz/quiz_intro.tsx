@@ -18,9 +18,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-import Grid from '@material-ui/core/Grid';
-
-
+import {getQuiz} from '../actions/quiz';
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -50,7 +48,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Classroom extends React.Component<any, any> {
+class TakeQuiz extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -70,6 +68,8 @@ class Classroom extends React.Component<any, any> {
 
     this.setState({quiz: this.props.quiz});
 
+    //this.props.getQuiz()
+
   }
 
   componentDidUpdate = () => {
@@ -88,87 +88,79 @@ class Classroom extends React.Component<any, any> {
 
   }
 
-  studentTakeQuiz = () => {
+  takeQuiz = () => {
 
-      this.props.history.push("/quiz/intro");
+      ///this.props.saveQuestionAnswer(this.state.answer);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
+      this.props.history.push("/quiz/take");
 
   }
 
-  teacherLogin = () => {
-
-      this.props.history.push("/teacher");
-      //alert(e.target.value);
-      //this.props.nextQuestion(this.state.current_question + 1)
-      ///this.state.question == 
-
-  }
-
+  /*<FormControl component={"fieldset" as "div"} className={classes.formControl}>
+          <FormLabel component={"legend" as "menu"}>{quiz.quiz_question}</FormLabel>    
+          <RadioGroup
+                aria-label="Gender"
+                name="gender1"
+                value={this.state.quiz_question_answer}
+                onChange={this.handleChange}
+              >                
+          <br/>
+          {quiz.quiz_choices != undefined && quiz.quiz_choices.map((choice: any) => 
+                                
+                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice.text}/>
+                                
+                                )}
+          <br/>
+          </RadioGroup>
+          </FormControl>*/
+ 
+  
   render(){
+
+    let divStyle = {
+
+      width: "100%",
+      height: "800px",
+      backgroundImage: "url(\"https://s3-us-west-2.amazonaws.com/naca-portal/QuizIntro.jpg\")",
+      backgroundRepeat: "no-repeat",
+      display: "block",
+      backgroundSize: "cover"
+    }
+
 
     const {match, classes} = this.props;
     const {quiz} = this.state;
     return (
-      <div>
-          <Grid container spacing={24}>
-              <Grid item xs={12} sm={1} md={2} lg={4}>
-                
-              </Grid>
-              <Grid item xs>
-                  Student Take Quiz
-                  <br/>
-                  <br/>
-                  <TextField
-                        id="standard-name"
-                        label="Email"
-                        className={classes.textField}
-                        value={this.state.dicussion_text}
-                        margin="normal"/>
-
-                  <br/>
-                  <TextField
-                        id="standard-name"
-                        label="Password"
-                        className={classes.textField}
-                        value={this.state.dicussion_text}
-                        margin="normal"/>
-                  <br/>
-                  <TextField
-                        id="standard-name"
-                        label="Quiz Number"
-                        className={classes.textField}
-                        value={this.state.dicussion_text}
-                        margin="normal"/>
-                  <br/>
-                  <Button onClick={this.studentTakeQuiz}>Student Take Quiz</Button>
-                  <br/>
-                  <br/>
-              </Grid>
-              <Grid item xs>
-                  <br/>
-                  Teacher Login
-                  <br/>
-                  <br/>
-                  <TextField
-                        id="standard-name"
-                        label="Email"
-                        className={classes.textField}
-                        value={this.state.dicussion_text}
-                        margin="normal" />
-
-                  <br/>
-                  <TextField
-                        id="standard-name"
-                        label="Password"
-                        className={classes.textField}
-                        value={this.state.dicussion_text}
-                        margin="normal"/>
-                  <br/>
-                  <Button onClick={this.teacherLogin}>Teacher Login</Button>
-                </Grid>
-          </Grid>  
+      <div style={divStyle}>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Button style={{ fontSize: '63px' }} onClick={this.takeQuiz}>Take Quiz</Button>
+         
       </div>
     );
   }
@@ -176,7 +168,7 @@ class Classroom extends React.Component<any, any> {
 
 const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
-  //alert("add " + JSON.stringify(state));
+  //alert("add " + JSON.stringify(state.quizes.quizes));
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
@@ -188,11 +180,14 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     nextQuestion: (previousQuestion: any) => {
       //dispatch(addTodo(title, description));
+    },
+    getQuiz: () => {
+      //dispatch(getQuiz());
     }
   };
 };
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(TakeQuiz)));
 
