@@ -117,6 +117,7 @@ class Classroom extends React.Component<any, any> {
                 
               </Grid>
               <Grid item xs>
+                  <br/>
                   Student Take Quiz
                   <br/>
                   <br/>
