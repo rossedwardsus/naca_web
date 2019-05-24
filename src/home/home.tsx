@@ -97,9 +97,9 @@ class Classroom extends React.Component<any, any> {
 
   }
 
-  teacherLogin = () => {
+  educatorLogin = () => {
 
-      this.props.history.push("/teacher");
+      this.props.history.push("/educator");
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
@@ -122,7 +122,7 @@ class Classroom extends React.Component<any, any> {
                   <br/>
                   <TextField
                         id="standard-name"
-                        label="Email"
+                        label="Username"
                         className={classes.textField}
                         value={this.state.dicussion_text}
                         margin="normal"/>
@@ -130,14 +130,7 @@ class Classroom extends React.Component<any, any> {
                   <br/>
                   <TextField
                         id="standard-name"
-                        label="Password"
-                        className={classes.textField}
-                        value={this.state.dicussion_text}
-                        margin="normal"/>
-                  <br/>
-                  <TextField
-                        id="standard-name"
-                        label="Quiz Number"
+                        label="Code"
                         className={classes.textField}
                         value={this.state.dicussion_text}
                         margin="normal"/>
@@ -148,7 +141,7 @@ class Classroom extends React.Component<any, any> {
               </Grid>
               <Grid item xs>
                   <br/>
-                  Teacher Login
+                  Educator Login
                   <br/>
                   <br/>
                   <TextField
@@ -166,7 +159,7 @@ class Classroom extends React.Component<any, any> {
                         value={this.state.dicussion_text}
                         margin="normal"/>
                   <br/>
-                  <Button onClick={this.teacherLogin}>Teacher Login</Button>
+                  <Button onClick={this.educatorLogin}>Educator Login</Button>
                 </Grid>
           </Grid>  
       </div>
