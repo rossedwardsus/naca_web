@@ -77,6 +77,7 @@ class TakeQuiz extends React.Component<any, any> {
                 //console.log(res.data);
                 this.setState({quiz_question_text: res.data.question.quiz_question_text});
                 this.setState({quiz_choices: res.data.answers})
+                this.setState({current_question: 1})
               });
                 
 
@@ -105,7 +106,7 @@ class TakeQuiz extends React.Component<any, any> {
 
   nextQuestion = () => {
 
-      axios.post("http://naca-api-alpha-dev.herokuapp.com/api/quiz/1/response/1", {  })
+      axios.post("http://naca-api-alpha-dev.herokuapp.com/api/quiz/1/response/" + this.state.current_question, {  })
         .then(res => {
           //alert(JSON.stringify(res.data));
           //console.log(res.data);

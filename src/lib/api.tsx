@@ -21,4 +21,6 @@ const SecretRoute = ({ component: Component, ...rest }: any) => (
 );
 
 
-
+//saveResponseNextQuestion
+//axios.post("http://naca-api-alpha-dev.herokuapp.com/api/quiz/1/response/" + this.state.current_question, {  })
+        
