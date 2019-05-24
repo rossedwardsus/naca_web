@@ -59,7 +59,7 @@ class TakeQuiz extends React.Component<any, any> {
       quiz: {},
       current_question: 0,
       quiz_question_text: "",
-      quiz_question_answer: 0,
+      quiz_question_answer: "",
       quiz_choices: []
     }
   }
@@ -110,8 +110,9 @@ class TakeQuiz extends React.Component<any, any> {
           //alert(JSON.stringify(res.data));
           //console.log(res.data);
           this.setState({quiz_question_text: res.data.question.quiz_question_text});
-          this.setState({quiz_choices: res.data.answers})
+          this.setState({quiz_choices: res.data.answers});
           this.setState({current_question: this.state.current_question + 1});
+          this.setState({quiz_question_answer: ""});
         });
 
 
