@@ -34,18 +34,17 @@ import Home from "./home/home";
 //import ApproveAccount from "./auth/approve_request";
 
 import Classroom from "./classroom/classroom";
-import TeacherHomepage from "./teacher/teacher_homepage";
-import TeacherStudents from "./teacher/students";
-import TeacherStudent from "./teacher/student";
-import TeacherStudentEdit from "./students/student_edit";
-import TeacherStudentTests from "./teacher/student_tests";
-import TeacherStudentTestResults from "./teacher/student_test_results";
-import TeacherStudentAdd from "./teacher/student_add";
-import TeacherGroupAdd from "./teacher/add_student_grouping";
-import GroupTestAdd from "./teacher/group_test_add";
-import TeacherStudentsGroups from "./teacher/student_groups";
-import TeacherStudentsGroup from "./teacher/student_group";
-import TakeQuiz from "./teacher/take_quiz";
+import EducatorHomepage from "./educator/educator_homepage";
+import EducatorStudents from "./educator/students";
+import EducatorStudent from "./educator/student";
+import EducatorStudentEdit from "./students/student_edit";
+import EducatorStudentTests from "./educator/student_tests";
+import EducatorStudentTestResults from "./educator/student_test_results";
+import EducatorStudentAdd from "./educator/student_add";
+import EducatorGroupAdd from "./educator/add_student_grouping";
+import GroupTestAdd from "./educator/group_test_add";
+import EducatorStudentsGroups from "./educator/student_groups";
+import EducatorStudentsGroup from "./educator/student_group";
 
 //import compose from 'recompose/compose';
 //import connect from 'redux';
@@ -167,24 +166,24 @@ class Naca extends React.Component<any, any> {
         </AppBar>
         <div className={classes.root}>
               <Switch>
-                <Route path="/teacher/students/groups/:group_id" component={TeacherStudentsGroup} />
+                <Route path="/educator/students/groups/:group_id" component={EducatorStudentsGroup} />
                 <Route exact path="/" component={Home} />
                 <Route exact path="/quiz/intro" component={QuizIntro} />
                 <Route exact path="/quiz/take" component={QuizTake} />
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={Signup} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
-                <Route exact path="/teacher" component={TeacherHomepage} />
-                <Route exact path="/teacher/students" component={TeacherStudents} />
-                <Route exact path="/teacher/students/groups" component={TeacherStudentsGroups} />
-                <Route exact path="/teacher/student/add" component={TeacherStudentAdd} />
-                <Route exact path="/teacher/student/tests" component={TeacherStudentTests} />
-                <Route exact path="/teacher/student/tests/individual" component={TakeQuiz} />
-                <Route exact path="/teacher/student/tests/group" component={GroupTestAdd} />
-                <Route exact path="/teacher/group/add" component={TeacherGroupAdd} />
-                <Route path="/teacher/students/:student_id/exam/:test_id/results" component={TeacherStudentTestResults} />
-                <Route path="/teacher/students/:student_id" component={TeacherStudent} />
-                <Route path="/teacher/students/:student_id/edit" component={TeacherStudentEdit} />
+                <Route exact path="/educator" component={EducatorHomepage} />
+                <Route exact path="/educator/students" component={EducatorStudents} />
+                <Route exact path="/educator/students/groups" component={EducatorStudentsGroups} />
+                <Route exact path="/educator/student/add" component={EducatorStudentAdd} />
+                <Route exact path="/educator/student/tests" component={EducatorStudentTests} />
+                <Route exact path="/educator/student/tests/individual" component={QuizTake} />
+                <Route exact path="/educator/student/tests/group" component={GroupTestAdd} />
+                <Route exact path="/educator/group/add" component={EducatorGroupAdd} />
+                <Route path="/educator/students/:student_id/exam/:test_id/results" component={EducatorStudentTestResults} />
+                <Route path="/educator/students/:student_id" component={EducatorStudent} />
+                <Route path="/educator/students/:student_id/edit" component={EducatorStudentEdit} />
               </Switch>
         </div>
         

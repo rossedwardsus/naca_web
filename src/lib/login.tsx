@@ -1,21 +1,19 @@
 import React from "react";
 //import { match, RouteComponentProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { withStyles, Theme, StyleRulesCallback } from '@material-ui/core/styles/';
 import { withRouter } from 'react-router-dom'
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Select from '@material-ui/core/Select';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import PhoneIcon from '@material-ui/icons/Phone';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
-import MenuItem from '@material-ui/core/MenuItem';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 
-interface Identifiable { todo_id: string, url: string; }
+//interface Identifiable { todo_id: string, url: string; }
 
 const styles: StyleRulesCallback = (theme: Theme) => ({
   container: {
@@ -37,7 +35,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class TakeQuiz extends React.Component<any, any> {
+class Login extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -55,8 +53,13 @@ class TakeQuiz extends React.Component<any, any> {
     //alert(JSON.stringify(this.props));
 
   }
+  onEmailChange = () => {
 
-  onFirstNameChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      //alert(e.target.value);
+
+  }
+
+  onPasswordChange = () => {
 
       //alert(e.target.value);
 
@@ -64,49 +67,30 @@ class TakeQuiz extends React.Component<any, any> {
 
   render(){
 
-    const {match, classes} = this.props;
-
+    const {classes} = this.props;
     return (
-      <div
+      <div>
           <TextField
-                id="standard-name"
-                label="First Name"
-                className={classes.textField}
-                value={this.state.email}
-                margin="normal"
-                onChange={this.onFirstNameChange}/>
-            <br/>
-            <b>{match.params.todo_id}</b>
-            <br/>
-           <TextField
-                id="standard-name"
-                label="Last Name"
-                className={classes.textField}
-                value={this.state.password}
-                margin="normal"
-                onChange={this.onFirstNameChange}/>
-            <br/>
-            <br/>
-            <TextField
                 id="standard-name"
                 label="Email"
                 className={classes.textField}
-                value={this.state.email}
+                value={this.state.dicussion_text}
                 margin="normal"
-                onChange={this.onFirstNameChange}/>
-            <br/>
-            <TextField
-              id="standard-name"
-              label="About Me"
-              className={classes.textField}
-              value={this.state.description}
-              margin="normal"
-              multiline={true}
-              onChange={this.onFirstNameChange}
-            />
-            <br/>
-            <Button>Start Quiz</Button>
+                multiline={true}
+                onChange={this.onEmailChange}/>
+
           <br/>
+          <TextField
+                id="standard-name"
+                label="Password"
+                className={classes.textField}
+                value={this.state.dicussion_text}
+                margin="normal"
+                multiline={true}
+                onChange={this.onPasswordChange}/>
+          <br/>
+          <Button>Login</Button>
+         
       </div>
     );
   }
@@ -117,6 +101,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
   //alert("add " + JSON.stringify(state));
   return {
     //todo: {id:1, title: "title", description: "description"}
+    //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
+    //questions: state.questions.questions
   };
 };
 
@@ -130,5 +116,5 @@ const mapDispatchToProps = (dispatch: any) => {
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(TakeQuiz)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Login)));
 

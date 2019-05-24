@@ -18,12 +18,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-import Grid from '@material-ui/core/Grid';
-
-import axios from "axios";
-
-import Sidebar from '../sidebar/sidebar';
-
+import {getQuiz} from '../actions/quiz';
 
 //interface Identifiable { todo_id: string, url: string; }
 
@@ -53,7 +48,7 @@ const styles: StyleRulesCallback = (theme: Theme) => ({
 });
 
 
-class Classroom extends React.Component<any, any> {
+class TakeQuiz extends React.Component<any, any> {
   //const { classes } = props;
 
   constructor(props: any){
@@ -71,24 +66,9 @@ class Classroom extends React.Component<any, any> {
     //alert(this.props.match.params.list_id);
     //alert(JSON.stringify(this.props));
 
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'JWT fefege...' 
-      }
-
-      axios.post("http://localhost:5000/api/teacher/1/students", {"hello": "there"}, {headers: headers})
-        .then(res => {
-          alert(JSON.stringify(res));
-          console.log(res.data);
-          //localStorage.setItem("user", JSON.stringify({session_token: res.data.status.session_token}));
-          //redirect to homepage
-          //alert(JSON.parse(localStorage.getItem("user")).session_token);
-        }).catch((error) => {
-          //alert(error) //Logs a string: Error: Request failed with status code 404
-        })
-
-
     this.setState({quiz: this.props.quiz});
+
+    //this.props.getQuiz()
 
   }
 
@@ -108,69 +88,91 @@ class Classroom extends React.Component<any, any> {
 
   }
 
-  nextQuestion = () => {
+  takeQuiz = () => {
 
-      this.props.saveQuestionAnswer(this.state.answer);
+      ///this.props.saveQuestionAnswer(this.state.answer);
       //alert(e.target.value);
       //this.props.nextQuestion(this.state.current_question + 1)
       ///this.state.question == 
+      this.props.history.push("/quiz/take");
 
   }
 
+  /*<FormControl component={"fieldset" as "div"} className={classes.formControl}>
+          <FormLabel component={"legend" as "menu"}>{quiz.quiz_question}</FormLabel>    
+          <RadioGroup
+                aria-label="Gender"
+                name="gender1"
+                value={this.state.quiz_question_answer}
+                onChange={this.handleChange}
+              >                
+          <br/>
+          {quiz.quiz_choices != undefined && quiz.quiz_choices.map((choice: any) => 
+                                
+                                  <FormControlLabel value="female" control={<Radio value="1" />} label={choice.text}/>
+                                
+                                )}
+          <br/>
+          </RadioGroup>
+          </FormControl>*/
+ 
+  
   render(){
 
-    const {students, match, classes} = this.props;
+    let divStyle = {
+
+      width: "100%",
+      height: "800px",
+      backgroundImage: "url(\"https://s3-us-west-2.amazonaws.com/naca-portal/QuizIntro.jpg\")",
+      backgroundRepeat: "no-repeat",
+      display: "block",
+      backgroundSize: "cover"
+    }
+
+
+    const {match, classes} = this.props;
     const {quiz} = this.state;
     return (
-      <div>
-        <Grid container spacing={24}>
-              <Grid item xs={12} sm={1} md={1} lg={1}>
-              </Grid>
-              <Grid item xs={12} sm={1} md={2} lg={4}>
-                <Sidebar/>
-              </Grid>
-              <Grid item xs>
-                Search
-                <br/>
-                 <TextField
-                      id="standard-name"
-                      label="Search Students"
-                      className={classes.textField}
-                      value={this.state.dicussion_text}
-                      margin="normal" />
-                <br/>
-                <br/>
-                List of students and their scores/attendance
-                <br/>
-                {students.map((student: any) => <div>{student.student_first_name}</div>)}
-                <br/>
-                <br/>
-                <Link to="/teacher/students/1">Student First Name Student Last Name</Link>
-                <br/>
-                <br/>
-                <br/>
-                <Link to="/teacher/student/add">Add Student</Link>
-                <br/>
-                <br/>
-                <Link to="/teacher/group/add">Add Group</Link>
-              </Grid>
-          </Grid>
+      <div style={divStyle}>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Button style={{ fontSize: '63px' }} onClick={this.takeQuiz}>Take Quiz</Button>
+         
       </div>
     );
   }
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  //alert("add " + JSON.stringify(ownProps.match.path));
-  //alert("add " + JSON.stringify(state.teacher.teacher));
-
-  //let students = state.teacher.students
+  //alert("add " + JSON.stringify(ownProps.match.params.todo_id));
+  //alert("add " + JSON.stringify(state.quizes.quizes));
   return {
     //todo: {id:1, title: "title", description: "description"}
     //questions: [{question_id: 1, question_count: 1, question_user: "1", question_title: "i am stressed", question_datetime: "datetime"}]
-    //quiz: state.quizes.quizes[0]
-    students: state.teacher.teacher.students,
-    path: ownProps.match.path
+    quiz: state.quizes.quizes[0]
   };
 };
 
@@ -178,11 +180,14 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     nextQuestion: (previousQuestion: any) => {
       //dispatch(addTodo(title, description));
+    },
+    getQuiz: () => {
+      //dispatch(getQuiz());
     }
   };
 };
 
 //export default Todo;
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(Classroom)));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(withRouter(TakeQuiz)));
 
