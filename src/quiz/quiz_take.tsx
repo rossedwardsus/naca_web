@@ -97,7 +97,7 @@ class TakeQuiz extends React.Component<any, any> {
 
   handleChange = (e:any) => {
 
-      alert(e.target.value);
+      //alert(e.target.value);
 
       this.setState({quiz_question_answer: e.target.value});
 
@@ -111,6 +111,7 @@ class TakeQuiz extends React.Component<any, any> {
           //console.log(res.data);
           this.setState({quiz_question_text: res.data.question.quiz_question_text});
           this.setState({quiz_choices: res.data.answers})
+          this.setState({current_question: this.state.current_question + 1});
         });
 
 
