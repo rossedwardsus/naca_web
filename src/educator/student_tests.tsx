@@ -82,10 +82,10 @@ class TeacherStudentTest extends React.Component<any, any> {
               </Grid>
               <Grid item xs={6} sm={6} md={6} lg={6}>
                 <br/>
-                <Link to="/teacher/student/test/individual">Start Individual Test</Link>
+                <Link to="/educator/student/tests/individual">Create Individual Test</Link>
                 <br/>
                 <br/>
-                <Link to="/teacher/student/test/group">Start Group Test</Link>
+                <Link to="/educator/student/tests/group">Create Group Test</Link>
               </Grid>
           </Grid>
       </div>

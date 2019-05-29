@@ -60,7 +60,8 @@ class TakeQuiz extends React.Component<any, any> {
       current_question: 0,
       quiz_question_text: "",
       quiz_question_answer: "",
-      quiz_choices: []
+      quiz_choices: [],
+      questions_total: 0
     }
   }
 

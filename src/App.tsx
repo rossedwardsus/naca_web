@@ -35,7 +35,7 @@ import Home from "./home/home";
 
 import Classroom from "./classroom/classroom";
 import EducatorHomepage from "./educator/educator_homepage";
-import EducatorStudents from "./educator/students";
+//import EducatorStudents from "./educator/students";
 import EducatorStudent from "./educator/student";
 import EducatorStudentEdit from "./students/student_edit";
 import EducatorStudentTests from "./educator/student_tests";
@@ -174,7 +174,6 @@ class Naca extends React.Component<any, any> {
                 <Route exact path="/signup" component={Signup} />
                 <Route path="/classrooms/:classroom_id" component={Classroom} />
                 <Route exact path="/educator" component={EducatorHomepage} />
-                <Route exact path="/educator/students" component={EducatorStudents} />
                 <Route exact path="/educator/students/groups" component={EducatorStudentsGroups} />
                 <Route exact path="/educator/student/add" component={EducatorStudentAdd} />
                 <Route exact path="/educator/student/tests" component={EducatorStudentTests} />

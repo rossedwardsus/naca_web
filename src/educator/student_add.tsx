@@ -17,6 +17,8 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Grid from '@material-ui/core/Grid';
+
 
 import {addStudent} from "../actions/teachers";
 
@@ -175,82 +177,88 @@ class StudentAdd extends React.Component<any, any> {
     const {match, classes} = this.props;
     const {quiz} = this.state;
     return (
-      <div>
-          <br/>
-          Add student
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="First Name"
-                className={classes.textField}
-                value={this.state.student_first_name}
-                onChange={this.onFirstNameChange}
-                margin="normal"/>
+         <div className={classes.root}>
+              <Grid container spacing={24}>
+                <Grid item xs={12} sm={1} md={6} lg={6}>   
+                <br/>
+                Add student1
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <TextField
+                      id="standard-name"
+                      label="First Name"
+                      className={classes.textField}
+                      value={this.state.student_first_name}
+                      onChange={this.onFirstNameChange}
+                      margin="normal"/>
 
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Last Name"
-                className={classes.textField}
-                value={this.state.student_last_name}
-                onChange={this.onLastNameChange}
-                margin="normal"/>
+                <br/>
+                <TextField
+                      id="standard-name"
+                      label="Last Name"
+                      className={classes.textField}
+                      value={this.state.student_last_name}
+                      onChange={this.onLastNameChange}
+                      margin="normal"/>
 
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Grade Level"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                onChange={this.onGradeChange}
-                margin="normal"/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Gender"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                onChange={this.onGenderChange}
-                margin="normal"/>
-          <br/>
-          <br/>
-          Is this the student’s gender at birth?
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Race"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                onChange={this.onBirthGenderChange}
-                margin="normal"
-                multiline={true}/>
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="Age"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                onChange={this.onAgeChange}
-                margin="normal"
-                multiline={true}/>
-          <br/>
-          <br/>
-          <TextField
-                id="standard-name"
-                label="State"
-                className={classes.textField}
-                value={this.state.dicussion_text}
-                margin="normal"
-                multiline={true}/>
-          <br/>
-          <br/>
-          <Button onClick={this.addStudent}>Add Student</Button>
-          <br/>
+                <br/>
+                <TextField
+                      id="standard-name"
+                      label="Grade Level"
+                      className={classes.textField}
+                      value={this.state.dicussion_text}
+                      onChange={this.onGradeChange}
+                      margin="normal"/>
+                <br/>
+                <TextField
+                      id="standard-name"
+                      label="Gender"
+                      className={classes.textField}
+                      value={this.state.dicussion_text}
+                      onChange={this.onGenderChange}
+                      margin="normal"/>
+                <br/>
+                <br/>
+                Is this the student’s gender at birth?
+                <br/>
+              </Grid>
+              <Grid item xs={12} sm={1} md={6} lg={6}>   
+                <br/>
+                <TextField
+                      id="standard-name"
+                      label="Race"
+                      className={classes.textField}
+                      value={this.state.dicussion_text}
+                      onChange={this.onBirthGenderChange}
+                      margin="normal"
+                      multiline={true}/>
+                <br/>
+                <br/>
+                <TextField
+                      id="standard-name"
+                      label="Age"
+                      className={classes.textField}
+                      value={this.state.dicussion_text}
+                      onChange={this.onAgeChange}
+                      margin="normal"
+                      multiline={true}/>
+                <br/>
+                <br/>
+                <TextField
+                      id="standard-name"
+                      label="State"
+                      className={classes.textField}
+                      value={this.state.dicussion_text}
+                      margin="normal"
+                      multiline={true}/>
+                <br/>
+                <br/>
+                <Button onClick={this.addStudent}>Add Student</Button>
+                <br/>
+              </Grid>
+            </Grid>
       </div>
     );
   }

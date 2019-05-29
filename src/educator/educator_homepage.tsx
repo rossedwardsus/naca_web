@@ -130,6 +130,9 @@ class EducatorHomepage extends React.Component<any, any> {
                 <Sidebar/>
               </Grid>
               <Grid item xs>
+                <br/>
+                <br/>
+                <br/>
                 Search
                 <br/>
                  <TextField
@@ -145,14 +148,14 @@ class EducatorHomepage extends React.Component<any, any> {
                 {students.map((student: any) => <div>{student.student_first_name}</div>)}
                 <br/>
                 <br/>
-                <Link to="/teacher/students/1">Student First Name Student Last Name</Link>
+                <Link to="/educator/students/1">Student First Name Student Last Name</Link>
                 <br/>
                 <br/>
                 <br/>
-                <Link to="/teacher/student/add">Add Student</Link>
+                <Link to="/educator/student/add">Add Student</Link>
                 <br/>
                 <br/>
-                <Link to="/teacher/group/add">Add Group</Link>
+                <Link to="/educator/group/add">Add Group</Link>
               </Grid>
           </Grid>
       </div>
